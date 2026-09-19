@@ -1,0 +1,20 @@
+// Full-page capture (landing) in a headless Chrome via CDP. Usage: node tools/headless-page.mjs <url> <out.png> [width] [height]
+import { spawn } from "node:child_process";
+import fs from "node:fs";
+const url = process.argv[2]; const out = process.argv[3] || (process.env.TEMP + "/tdf-page.png"); const W = Number(process.argv[4] || 1280), H = Number(process.argv[5] || 900);
+const chrome = "C:/Program Files/Google/Chrome/Application/chrome.exe"; const port = 9334; const prof = process.env.TEMP + "/tdf-chrome-prof2";
+fs.rmSync(prof, { recursive: true, force: true });
+const proc = spawn(chrome, ["--headless=new", `--remote-debugging-port=${port}`, "--use-angle=swiftshader", `--user-data-dir=${prof}`, "--no-first-run", `--window-size=${W},${H}`, "--hide-scrollbars", "about:blank"], { stdio: "ignore" });
+await new Promise(r => setTimeout(r, 2500));
+const list = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json(); const page = list.find(t => t.type === "page");
+const ws = new WebSocket(page.webSocketDebuggerUrl); let id = 0; const pending = new Map();
+const call = (method, params = {}) => new Promise(res => { const i = ++id; pending.set(i, res); ws.send(JSON.stringify({ id: i, method, params })); });
+ws.onmessage = ev => { const m = JSON.parse(ev.data); if (m.id && pending.has(m.id)) { pending.get(m.id)(m.result); pending.delete(m.id); } };
+await new Promise(r => ws.onopen = r);
+await call("Page.enable"); await call("Page.navigate", { url }); await new Promise(r => setTimeout(r, 3500));
+const h = (await call("Runtime.evaluate", { expression: "Math.min(Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, (document.getElementById('landing')||{}).scrollHeight||0), 7000)", returnByValue: true })).result.value;
+await call("Emulation.setDeviceMetricsOverride", { width: W, height: h, deviceScaleFactor: 1, mobile: false });
+await new Promise(r => setTimeout(r, 800));
+const shot = await call("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: { x: 0, y: 0, width: W, height: h, scale: 1 } });
+fs.writeFileSync(out, Buffer.from(shot.data, "base64")); console.log("PAGE:", out, W + "x" + h);
+proc.kill();

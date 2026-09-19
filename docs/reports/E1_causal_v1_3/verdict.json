@@ -1,0 +1,17 @@
+{
+  "4.1": {
+    "a_evoked_ge_3x_base": true,
+    "b_LI_ge_0.30": true,
+    "c_d_away_ge_0.05": true,
+    "d_flee_ge_0.65": true
+  },
+  "4.2": {
+    "pass": true,
+    "median_R": 1.0505869337875013,
+    "frac": 1.0
+  },
+  "4.3": true,
+  "4.4": true,
+  "4.5": true,
+  "all_pass": true
+}

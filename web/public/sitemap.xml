@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://thatdamnfly.com/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://thatdamnfly.com/?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thatdamnfly.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://thatdamnfly.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thatdamnfly.com/"/>
+  </url>
+  <url><loc>https://thatdamnfly.com/ciencia/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thatdamnfly.com/termos/</loc><lastmod>2026-09-14</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://thatdamnfly.com/privacidade/</loc><lastmod>2026-09-14</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://thatdamnfly.com/apoio/</loc><lastmod>2026-09-14</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

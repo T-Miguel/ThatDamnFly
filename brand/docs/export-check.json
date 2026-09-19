@@ -1,0 +1,38 @@
+[
+  {
+    "file": "png/logo-stacked-color-v1.png",
+    "width": 1600,
+    "height": 630,
+    "alpha": true
+  },
+  {
+    "file": "png/logo-horizontal-color-v1.png",
+    "width": 1490,
+    "height": 290,
+    "alpha": true
+  },
+  {
+    "file": "ios/AppIcon.appiconset/AppIcon-1024.png",
+    "width": 1024,
+    "height": 1024,
+    "alpha": false
+  },
+  {
+    "file": "android/google-play-icon-512.png",
+    "width": 512,
+    "height": 512,
+    "alpha": false
+  },
+  {
+    "file": "web/favicon-16.png",
+    "width": 16,
+    "height": 16,
+    "alpha": false
+  },
+  {
+    "file": "web/icon-maskable-512.png",
+    "width": 512,
+    "height": 512,
+    "alpha": false
+  }
+]

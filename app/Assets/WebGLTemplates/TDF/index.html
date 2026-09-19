@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>That Damn Fly - a fly with a real brain</title>
+  <meta name="description" content="One fly. Zero patience. A game of domestic revenge against a fly driven by a neural circuit of 816 neurons derived from a real connectome. Free on the web, no ads.">
+  <link rel="icon" href="TemplateData/favicon.ico" sizes="any">
+  <link rel="icon" href="TemplateData/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="TemplateData/apple-touch-icon.png">
+  <meta name="copyright" content="© 2026 Miguel Prego. Code MIT, content CC BY 4.0.">
+  <meta name="theme-color" content="#F4CD3C">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <!-- discovery: canonical, language versions, Open Graph/Twitter, manifest, structured data -->
+  <link rel="canonical" href="https://thatdamnfly.com/">
+  <link rel="alternate" hreflang="pt-PT" href="https://thatdamnfly.com/?lang=pt">
+  <link rel="alternate" hreflang="en" href="https://thatdamnfly.com/?lang=en">
+  <link rel="alternate" hreflang="es" href="https://thatdamnfly.com/?lang=es">
+  <link rel="alternate" hreflang="x-default" href="https://thatdamnfly.com/">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="That Damn Fly">
+  <meta property="og:url" content="https://thatdamnfly.com/">
+  <meta property="og:title" content="That Damn Fly - a fly with a real brain">
+  <meta property="og:description" content="One fly. Zero patience. The escape is decided by 816 neurons copied from the brain of a real fruit fly. Free on the web, no ads, open source.">
+  <meta property="og:image" content="https://thatdamnfly.com/TemplateData/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="pt_PT">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="That Damn Fly - a fly with a real brain">
+  <meta name="twitter:description" content="One fly. Zero patience. The escape is decided by 816 neurons copied from the brain of a real fruit fly.">
+  <meta name="twitter:image" content="https://thatdamnfly.com/TemplateData/og.png">
+  <meta name="keywords" content="that damn fly, fly game, neuroscience game, connectome, MaleCNS, Drosophila, free browser game, open source game, jogo da mosca, juego de la mosca">
+  <meta name="author" content="Miguel Prego">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "VideoGame",
+        "name": "That Damn Fly",
+        "url": "https://thatdamnfly.com/",
+        "image": "https://thatdamnfly.com/TemplateData/og.png",
+        "description": "One fly. Zero patience. A game of domestic revenge against a fly driven by a neural circuit of 816 neurons derived from the MaleCNS connectome of a fruit fly. Open source.",
+        "inLanguage": ["en", "pt-PT", "es"],
+        "genre": ["Arcade", "Casual", "Educational"],
+        "gamePlatform": ["Web browser", "Android", "iOS"],
+        "applicationCategory": "Game",
+        "operatingSystem": "Any",
+        "playMode": "SinglePlayer",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+        "author": { "@type": "Person", "name": "Miguel Prego" },
+        "publisher": { "@type": "Person", "name": "Miguel Prego" },
+        "copyrightHolder": { "@type": "Person", "name": "Miguel Prego" }, "license": "https://opensource.org/license/mit", "codeRepository": "https://github.com/T-Miguel/ThatDamnFly",
+        "copyrightYear": 2026,
+        "datePublished": "2026-09-14",
+        "dateModified": "2026-09-19",
+        "citation": { "@type": "Dataset", "name": "MaleCNS v1.0", "url": "https://male-cns.janelia.org/", "license": "https://creativecommons.org/licenses/by/4.0/" }
+      },
+      {
+        "@type": "WebSite",
+        "name": "That Damn Fly",
+        "url": "https://thatdamnfly.com/",
+        "inLanguage": ["pt-PT", "en", "es"],
+        "publisher": { "@type": "Person", "name": "Miguel Prego" }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root { --paper:#F7F0DE; --ink:#202622; --action:#F4CD3C; --fury:#AF3D2F; --info:#2755A5; --muted:#555E55; --surface:#CBD3B9; --white:#FFFDF7; }
+    html, body { margin:0; padding:0; height:100%; background:var(--paper); color:var(--ink); font-family: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow:hidden; touch-action:none; -webkit-user-select:none; user-select:none; }
+    #unity-container { position:fixed; inset:0; width:100%; height:100%; }
+    #unity-canvas { width:100%; height:100%; display:block; background:var(--paper); }
+    #loading { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; background:var(--paper); z-index:10; padding:24px; text-align:center; }
+    #loading h1 { font-weight:900; font-size:32px; letter-spacing:-0.5px; margin:0; }
+    #loading h1 span, .wordmark span { background:var(--action); padding:2px 8px; display:inline-block; transform:rotate(-2deg); font-size:16px; vertical-align:middle; margin-right:6px; }
+    #bar { width:min(300px, 80vw); height:12px; border:2px solid var(--ink); border-radius:6px; overflow:hidden; background:#fff8; }
+    #bar > div { height:100%; width:0%; background:var(--action); transition:width .15s; }
+    #status { font-size:14px; color:var(--muted); }
+    #warn { display:none; max-width:340px; font-size:14px; color:var(--ink); background:#fff; border:2px solid var(--ink); border-radius:12px; padding:12px 14px; }
+    #warn b { color:var(--fury); }
+    #warn button, #err button { margin-top:8px; font:inherit; font-weight:700; background:var(--action); border:2px solid var(--ink); border-radius:8px; padding:10px 14px; min-height:48px; color:var(--ink); }
+    #err { display:none; color:var(--fury); font-size:14px; max-width:340px; }
+    #err button { display:block; margin:10px auto 0; }
+    /* ---------- página de apresentação (computador; no telemóvel só com #sobre) ---------- */
+    #landing { display:none; }
+    body.landing { overflow:auto; touch-action:auto; -webkit-user-select:text; user-select:text; }
+    body.landing #unity-container, body.landing #loading { display:none; }
+    body.landing.playing #unity-container { display:block; position:fixed; inset:auto; left:50%; top:50%; transform:translate(-50%,-50%); width:var(--fw); height:var(--fh); border:3px solid var(--ink); border-radius:28px; overflow:hidden; box-shadow:0 24px 60px rgba(32,38,34,.25); background:var(--paper); }
+    body.landing.playing #loading { display:flex; position:fixed; inset:auto; left:50%; top:50%; transform:translate(-50%,-50%); width:var(--fw); height:var(--fh); border-radius:28px; }
+    body.landing.playing #landing { display:none; }
+    body.landing.playing #backbar { display:block; }
+    body.landing.playing.mobileplay #unity-container, body.landing.playing.mobileplay #loading { inset:0; left:0; top:0; transform:none; width:100%; height:100%; border:0; border-radius:0; box-shadow:none; }
+    body.landing.playing.mobileplay #backbar { display:none; }
+    #backbar { display:none; position:fixed; top:14px; left:18px; z-index:20; font-size:14px; }
+    #backbar a { color:var(--ink); text-decoration:none; border:2px solid var(--ink); background:#fff; border-radius:8px; padding:8px 12px; font-weight:700; }
+    body.landing #landing { display:block; }
+    #landing { line-height:1.5; }
+    #landing .wrap { max-width:1040px; margin:0 auto; padding:0 24px; }
+    #landing a { color:var(--info); }
+    #landing h2 { font-weight:900; font-size:34px; letter-spacing:-0.5px; margin:0 0 6px; line-height:1.1; }
+    #landing h3 { font-size:18px; margin:0 0 6px; }
+    #landing .lead { font-size:18px; color:var(--muted); margin:0 0 26px; max-width:720px; }
+    #landing section { padding:56px 0; }
+    #landing section + section { border-top:2px dashed rgba(32,38,34,.18); }
+    /* cabeçalho */
+    #top { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0 8px; flex-wrap:wrap; }
+    #landing .wordmark { font-weight:900; font-size:22px; letter-spacing:-0.3px; text-decoration:none; color:var(--ink); white-space:nowrap; }
+    #nav { display:flex; gap:6px 18px; flex-wrap:wrap; font-weight:700; font-size:15px; }
+    #nav a { color:var(--ink); text-decoration:none; border-bottom:3px solid transparent; }
+    #nav a:hover { border-bottom-color:var(--action); }
+    #lang { display:flex; gap:4px; border:2px solid var(--ink); border-radius:999px; padding:3px; background:#fff; }
+    #lang button { font:inherit; font-weight:700; font-size:13px; background:transparent; border:0; border-radius:999px; padding:6px 10px; cursor:pointer; color:var(--ink); }
+    #lang button[aria-pressed="true"] { background:var(--action); }
+    /* herói */
+    .hero { display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center; padding-top:28px !important; }
+    .hero h1 { font-weight:900; font-size:64px; letter-spacing:-1.5px; line-height:.95; margin:0 0 14px; }
+    .hero h1 span { background:var(--action); padding:2px 12px; display:inline-block; transform:rotate(-2deg); font-size:28px; vertical-align:middle; margin-right:8px; }
+    .hero .tag { font-size:22px; margin:0 0 12px; font-weight:700; }
+    .hero .sub { font-size:17px; color:var(--muted); margin:0 0 22px; max-width:560px; }
+    .cta { display:inline-block; font-weight:900; font-size:19px; background:var(--action); color:var(--ink) !important; border:3px solid var(--ink); border-radius:14px; padding:14px 26px; text-decoration:none; cursor:pointer; box-shadow:4px 4px 0 var(--ink); }
+    .cta:active { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink); }
+    .cta.secondary { background:var(--white); font-size:16px; padding:12px 18px; }
+    .ctas { display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+    .badges { display:flex; gap:8px; flex-wrap:wrap; font-size:13px; font-weight:700; color:var(--muted); }
+    .badges span { border:2px solid rgba(32,38,34,.25); border-radius:999px; padding:4px 10px; background:#fff8; }
+    .phoneshot { position:relative; width:min(270px, 70vw); margin:0 auto; }
+    .phoneshot img.shot { display:block; width:100%; height:auto; border:3px solid var(--ink); border-radius:26px; box-shadow:8px 8px 0 var(--ink); background:var(--paper); }
+    .phoneshot img.flyy { position:absolute; width:90px; right:-34px; top:-30px; transform:rotate(18deg); }
+    .qr { display:flex; gap:14px; align-items:center; justify-content:center; margin-top:22px; font-size:14px; color:var(--muted); }
+    .qr img { width:96px; height:96px; image-rendering:pixelated; border:2px solid var(--ink); border-radius:10px; background:#fff; padding:4px; }
+    /* cartões */
+    .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+    .card { background:var(--white); border:3px solid var(--ink); border-radius:18px; padding:20px 20px 18px; box-shadow:5px 5px 0 var(--ink); }
+    .card img { width:44px; height:44px; display:block; margin-bottom:10px; }
+    .card p { margin:0; color:var(--muted); font-size:15px; }
+    /* capturas */
+    .shots { display:grid; grid-template-columns:repeat(5, 1fr); gap:16px; }
+    .shots figure { margin:0; text-align:center; }
+    .shots img { width:100%; height:auto; border:3px solid var(--ink); border-radius:18px; box-shadow:5px 5px 0 var(--ink); background:var(--paper); }
+    .shots figcaption { margin-top:10px; font-size:14px; color:var(--muted); font-weight:700; }
+    /* passos */
+    .steps { display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; counter-reset:step; }
+    .step { position:relative; background:var(--paper); border:3px solid var(--ink); border-radius:18px; padding:26px 18px 18px; }
+    .step::before { counter-increment:step; content:counter(step); position:absolute; top:-16px; left:14px; width:32px; height:32px; border-radius:50%; background:var(--action); border:3px solid var(--ink); font-weight:900; display:flex; align-items:center; justify-content:center; }
+    .step p { margin:0; font-size:15px; }
+    /* ciência */
+    .sci { display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:start; }
+    .sci .block { margin-bottom:22px; }
+    .sci .block p { margin:0; font-size:16px; }
+    .neurons { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 0; }
+    .neurons span { font-family:ui-monospace, "Cascadia Mono", Consolas, monospace; font-size:13px; border:2px solid var(--ink); border-radius:8px; padding:3px 8px; background:#fff; }
+    .neurons span.dn { background:var(--action); }
+    .evidence { background:var(--white); border:3px solid var(--ink); border-radius:18px; padding:20px; box-shadow:5px 5px 0 var(--ink); }
+    .evidence table { width:100%; border-collapse:collapse; font-size:15px; margin-top:10px; }
+    .evidence td { padding:8px 4px; border-top:2px dashed rgba(32,38,34,.2); vertical-align:top; }
+    .evidence td:last-child { text-align:right; font-weight:900; white-space:nowrap; }
+    .evidence .big { font-size:40px; font-weight:900; line-height:1; color:var(--fury); }
+    .evidence .ok { color:var(--info); font-weight:700; font-size:14px; }
+    .pipeline { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-top:14px; }
+    .pipeline div { border:2px solid var(--ink); border-radius:12px; padding:10px; font-size:13px; background:#fff8; position:relative; }
+    .pipeline div b { display:block; font-size:14px; margin-bottom:4px; }
+    .pipeline div + div::before { content:"→"; position:absolute; left:-14px; top:10px; font-weight:900; }
+    .brainpill { display:flex; gap:12px; align-items:center; background:var(--paper); border:2px dashed var(--ink); border-radius:14px; padding:12px 14px; margin-top:12px; font-size:14px; }
+    .brainpill img { width:40px; height:40px; }
+    .notice { border-left:5px solid var(--fury); padding:4px 0 4px 14px; color:var(--ink); font-size:15px; }
+    .made .card p { font-size:14px; }
+    .process { margin-top:24px; background:var(--white); border:3px solid var(--ink); border-radius:18px; padding:20px 22px; box-shadow:5px 5px 0 var(--ink); }
+    .process ol { margin:8px 0 0; padding-left:22px; }
+    .process li { margin-bottom:10px; font-size:15px; }
+    .process p { margin:14px 0 0; font-size:15px; }
+    /* rodapé */
+    footer { padding:32px 0 60px; font-size:14px; color:var(--muted); display:flex; gap:12px 22px; flex-wrap:wrap; align-items:center; border-top:2px solid var(--ink); }
+    footer a { color:var(--info); }
+    @media (max-width:900px) { .hero { grid-template-columns:1fr; } .hero h1 { font-size:48px; } .grid { grid-template-columns:1fr 1fr; } .shots { grid-template-columns:1fr 1fr 1fr; } .steps { grid-template-columns:1fr 1fr; } .sci { grid-template-columns:1fr; } .pipeline { grid-template-columns:1fr 1fr; } .pipeline div + div::before { display:none; } }
+    @media (max-width:560px) { .grid, .steps, .shots { grid-template-columns:1fr; } .hero h1 { font-size:42px; } #landing h2 { font-size:28px; } #landing section { padding:40px 0; } }
+  </style>
+</head>
+<body>
+  <div id="landing">
+    <div class="wrap">
+      <header id="top">
+        <a class="wordmark" href="#"><span>THAT</span>DAMN FLY</a>
+        <nav id="nav">
+          <a href="#jogo" data-i18n="nav.game">O jogo</a>
+          <a href="#como" data-i18n="nav.how">Como jogar</a>
+          <a href="#ciencia" data-i18n="nav.sci">A ciência</a>
+          <a href="#feito" data-i18n="nav.made">Como foi feito</a>
+          <a href="https://github.com/T-Miguel/ThatDamnFly">GitHub</a>
+        </nav>
+        <div id="lang" role="group" aria-label="Language">
+          <button data-lang="en" aria-pressed="true">EN</button>
+          <button data-lang="pt" aria-pressed="false">PT</button>
+          <button data-lang="es" aria-pressed="false">ES</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <h1><span>THAT</span>DAMN FLY</h1>
+          <p class="tag" data-i18n="hero.tag">Uma mosca. Zero paciência. Um jogo de vingança doméstica - com uma mosca que tem um cérebro a sério.</p>
+          <p class="sub" data-i18n="hero.sub">Ela vê o objeto a descer e foge - porque a fuga é decidida por um circuito de 816 neurónios copiado do cérebro de uma mosca-da-fruta real. Bate onde ela VAI estar, não onde está.</p>
+          <div class="ctas">
+            <a class="cta" id="playdesk" href="#jogar" data-i18n="hero.play">Jogar aqui no computador</a>
+            <a class="cta secondary" href="#ciencia" data-i18n="hero.sci">Como funciona o cérebro</a>
+          </div>
+          <div class="badges"><span data-i18n="hero.b1">Grátis na web</span><span data-i18n="hero.b2">Sem anúncios</span><span data-i18n="hero.b3">Sem contas</span><span data-i18n="hero.b4">PT · EN</span></div>
+        </div>
+        <div>
+          <div class="phoneshot"><img class="shot" src="TemplateData/shots/pt/start.jpg?v={{{ PRODUCT_VERSION }}}" data-shot="start" alt="" width="420" height="909"><img class="flyy" src="TemplateData/art/fly.png" alt=""></div>
+          <div class="qr"><img src="TemplateData/qr.svg" alt="QR thatdamnfly.com"><div data-i18n="hero.qr"><b>Melhor no telemóvel.</b><br>Aponta a câmara ao código ou abre <b>thatdamnfly.com</b> no Safari/Chrome.</div></div>
+        </div>
+      </section>
+
+      <section id="jogo">
+        <h2 data-i18n="game.h">O jogo</h2>
+        <p class="lead" data-i18n="game.lead">Sessenta segundos, uma cozinha, uma mosca que não te larga. Cada captura dá tempo extra - e cada falhanço dá fúria.</p>
+        <div class="grid">
+          <div class="card"><img src="TemplateData/art/icon_brain_eyes.png" alt=""><h3 data-i18n="game.c1h">Um cérebro a sério</h3><p data-i18n="game.c1">A fuga não é um guião: é um circuito neural derivado de um conectoma real. O ícone do cérebro acende no momento em que ela te viu.</p></div>
+          <div class="card"><img src="TemplateData/art/icon_star.png" alt=""><h3 data-i18n="game.c2h">O Dia: sete cenários</h3><p data-i18n="game.c2">Cozinha, esplanada, praia, piquenique, quintal, sala e casa de banho. Três pedidos em cada um; uma estrela abre o seguinte; no fim espera a mosca-chefe.</p></div>
+          <div class="card"><img src="TemplateData/art/icon_hand.png" alt=""><h3 data-i18n="game.c3h">Os objetos, na tua mão</h3><p data-i18n="game.c3">Pano, frigideira, frigorífico, chinelo, geleira, sofá… Arrasta-os do cenário para uma mão em primeira pessoa e atira. Os grandes só quando a fúria sobe.</p></div>
+          <div class="card"><img src="TemplateData/art/icon_records.png" alt=""><h3 data-i18n="game.c4h">Fúria e combos</h3><p data-i18n="game.c4">Falhar irrita. A fúria abre objetos maiores; capturas seguidas fazem combos e dão tempo extra. Ao combo ×3 ganhas uma isca.</p></div>
+          <div class="card"><img src="TemplateData/art/icon_daily.png" alt=""><h3 data-i18n="game.c5h">Mosca do dia</h3><p data-i18n="game.c5">A mesma mosca para toda a gente, todos os dias. Recordes, repetição da melhor captura, cartão para partilhar - e uma coleção de moscas com títulos.</p></div>
+          <div class="card"><img src="TemplateData/art/icon_slap.png" alt=""><h3 data-i18n="game.c6h">Bónus: a cara</h3><p data-i18n="game.c6">Ganha uma estrela e tens 20 s para afastar as moscas da cara de uma personagem - o Zé, a Dona Amélia, o Tiago, o avô Anselmo ou o chef Rui. Cada falha cai-lhes na cara: reagem, ficam vermelhos e rebentam.</p></div>
+        </div>
+      </section>
+
+      <section id="capturas">
+        <div class="shots">
+          <figure><img src="TemplateData/shots/pt/start.jpg?v={{{ PRODUCT_VERSION }}}" data-shot="start" alt="" width="420" height="909"><figcaption data-i18n="shot.1">Escolhe o cenário</figcaption></figure>
+          <figure><img src="TemplateData/shots/pt/round.jpg?v={{{ PRODUCT_VERSION }}}" data-shot="round" alt="" width="420" height="909"><figcaption data-i18n="shot.2">Na cozinha, com o pano na mão</figcaption></figure>
+          <figure><img src="TemplateData/shots/pt/face.jpg?v={{{ PRODUCT_VERSION }}}" data-shot="face" alt="" width="420" height="909"><figcaption data-i18n="shot.5">Bónus: afasta as moscas da cara</figcaption></figure>
+          <figure><img src="TemplateData/shots/pt/boss.jpg?v={{{ PRODUCT_VERSION }}}" data-shot="boss" alt="" width="420" height="909"><figcaption data-i18n="shot.3">A mosca-chefe na casa de banho</figcaption></figure>
+          <figure><img src="TemplateData/shots/pt/result.jpg?v={{{ PRODUCT_VERSION }}}" data-shot="result" alt="" width="420" height="909"><figcaption data-i18n="shot.4">Pedidos, estrelas e a ficha da ronda</figcaption></figure>
+        </div>
+      </section>
+
+      <section id="como">
+        <h2 data-i18n="how.h">Como jogar</h2>
+        <p class="lead" data-i18n="how.lead">Não é preciso tutorial - mas isto ajuda.</p>
+        <div class="steps">
+          <div class="step"><p data-i18n="how.1">Toca perto da mosca. Ela vê o objeto a descer e foge - por isso bate onde ela <b>vai</b> estar.</p></div>
+          <div class="step"><p data-i18n="how.2">Para trocar de objeto, arrasta-o do cenário para a mão, cá em baixo. Um toque é sempre um ataque.</p></div>
+          <div class="step"><p data-i18n="how.3">A fúria sobe com os falhanços: aos 25 abrem os objetos médios, aos 60 os gigantes (prime, mira, larga).</p></div>
+          <div class="step"><p data-i18n="how.4">Cumpre os pedidos, ganha estrelas, abre o cenário seguinte - cada estrela nova dá direito ao bónus da cara. Na casa de banho, apanha a chefe e fecha o dia.</p></div>
+        </div>
+      </section>
+
+      <section id="ciencia">
+        <h2 data-i18n="sci.h">A ciência</h2>
+        <p class="lead" data-i18n="sci.lead">A mosca do jogo não segue um guião. Cada vez que um objeto se aproxima, um modelo neural - construído a partir de um cérebro real - decide se foge e para onde.</p>
+        <div class="sci">
+          <div>
+            <div class="block"><h3 data-i18n="sci.1h">De onde vem o cérebro</h3><p data-i18n="sci.1">Do <a href="https://male-cns.janelia.org/download/">MaleCNS v1.0</a> (FlyEM / HHMI Janelia): o conectoma - o mapa de todos os neurónios e das suas sinapses - do sistema nervoso central de uma mosca-da-fruta macho (<i>Drosophila melanogaster</i>), publicado sob licença <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p></div>
+            <div class="block"><h3 data-i18n="sci.2h">O que extraímos</h3><p data-i18n="sci.2">Um circuito de <b>816 neurónios</b> e <b>38 521 ligações</b> em torno das vias visuais de fuga: os neurónios de projeção visual que respondem a objetos a crescer no campo de visão («looming») e os neurónios descendentes que comandam a fuga - incluindo a famosa <i>Giant Fiber</i>.</p>
+              <div class="neurons"><span>LC4</span><span>LPLC2</span><span>LPLC1</span><span>LPLC4</span><span class="dn">DNp01 · Giant Fiber</span><span class="dn">DNp02</span><span class="dn">DNp03</span><span class="dn">DNp04</span><span class="dn">DNp06</span><span class="dn">DNp11</span></div></div>
+            <div class="block"><h3 data-i18n="sci.3h">Como corre no teu telemóvel</h3><p data-i18n="sci.3">Um codificador sensorial transforma cada objeto que se aproxima em sinais de «looming» por setor do campo visual. O <b>FlyCore</b>, um simulador de neurónios com disparo (<i>spiking</i>) escrito em C++, avança o circuito em passos de 10 ms, em tempo real. A atividade dos neurónios descendentes, esquerda e direita, move um corpo virtual: para trás e para o lado oposto ao estímulo. A mosca não recebe a posição do dedo, o objeto escolhido nem a fúria - só o que «vê».</p>
+              <div class="pipeline"><div><b data-i18n="pipe.1h">Cenário</b><span data-i18n="pipe.1">objeto a descer, margens</span></div><div><b data-i18n="pipe.2h">Codificador</b><span data-i18n="pipe.2">looming por setor visual</span></div><div><b>FlyCore</b><span data-i18n="pipe.3">816 neurónios, passos de 10 ms</span></div><div><b data-i18n="pipe.4h">Corpo</b><span data-i18n="pipe.4">fuga esquerda/direita, vaguear, poisos</span></div></div>
+              <div class="brainpill"><img src="TemplateData/art/icon_brain_eyes.png" alt=""><span data-i18n="sci.brain">No jogo, o ícone do cérebro acende quando os neurónios de fuga do modelo disparam - é o momento exato em que a mosca «te viu». A ficha da ronda diz em quantos ataques te viu e com que reflexo.</span></div></div>
+            <div class="block"><h3 data-i18n="sci.5h">O que não é</h3><p class="notice" data-i18n="sci.5">Não é um cérebro completo, não é um animal vivo, não sente dor e não aprende entre partidas. Os parâmetros dinâmicos (limiares, constantes de tempo, o corpo) foram escolhidos por nós. Os autores dos dados não patrocinam nem validaram este jogo.</p></div>
+          </div>
+          <div>
+            <div class="evidence">
+              <h3 data-i18n="ev.h">Testámos se é mesmo o circuito que decide</h3>
+              <p data-i18n="ev.p" style="margin:0 0 10px;font-size:15px;color:var(--muted)">Protocolo pré-registado, 12 000 ensaios, cinco condições, corrido com o mesmo simulador do jogo.</p>
+              <div class="big">91%</div>
+              <div data-i18n="ev.big" style="font-size:14px;margin-bottom:6px">das vezes a mosca foge de um objeto a aproximar-se de frente ou de lado, com o circuito intacto.</div>
+              <table>
+                <tr><td data-i18n="ev.r1">Circuito intacto</td><td>91 %</td></tr>
+                <tr><td data-i18n="ev.r2">Ligações visuais → descendentes cortadas</td><td>36 %</td></tr>
+                <tr><td data-i18n="ev.r3">Pesos das ligações baralhados</td><td data-i18n="ev.r3v">sem resposta dirigida</td></tr>
+                <tr><td data-i18n="ev.r4">Saída motora desligada</td><td data-i18n="ev.r4v">só vaguear</td></tr>
+              </table>
+              <p class="ok" data-i18n="ev.ok">Todos os critérios pré-registados passaram. Os 36 % restantes são o vaguear normal da mosca, não uma fuga.</p>
+              <p style="margin:12px 0 0;font-size:14px"><a href="/ciencia/" data-i18n="ev.more">Página da ciência, com fontes</a> · <a href="/model/tdf-escape-v0.1-p2/" data-i18n="ev.model">pacote neural (público, sem DRM)</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="feito">
+        <h2 data-i18n="made.h">Como foi feito</h2>
+        <p class="lead" data-i18n="made.lead">Um projeto de Miguel Prego, feito com dois assistentes de IA.</p>
+        <div class="grid made">
+          <div class="card"><h3 data-i18n="made.c1h">Miguel Prego - direção</h3><p data-i18n="made.c1">Direção, decisões e aceitação de cada versão.</p></div>
+          <div class="card"><h3 data-i18n="made.c2h">GPT‑6 Astra - estrutura e ciência</h3><p data-i18n="made.c2">A estrutura funcional, técnica e de design do projeto, e a análise científica.</p></div>
+          <div class="card"><h3 data-i18n="made.c3h">Claude Opus 5 - implementação</h3><p data-i18n="made.c3">A extração do circuito, o simulador FlyCore, o codificador sensorial e o corpo, o jogo em Unity, a arte e os sons gerados por scripts, este site.</p></div>
+        </div>
+        <div class="process">
+          <p data-i18n="made.oss"><b>Código aberto.</b> O código está sob licença MIT e os conteúdos (arte, sons, música, textos) sob CC BY 4.0: <a href="https://github.com/T-Miguel/ThatDamnFly">github.com/T-Miguel/ThatDamnFly</a>. O nome e o logótipo identificam o jogo oficial.</p>
+        </div>
+      </section>
+
+      <footer>
+        <span>V {{{ PRODUCT_VERSION }}} · © 2026 Miguel Prego · <span data-i18n="foot.rights">código MIT · conteúdos CC BY 4.0</span></span><a href="https://github.com/T-Miguel/ThatDamnFly">GitHub</a>
+        <a href="/ciencia/" data-i18n="foot.sci">Ciência e fontes</a><a href="/termos/" data-i18n="foot.terms">Termos e licenças</a><a href="/privacidade/" data-i18n="foot.priv">Privacidade</a><a href="/apoio/" data-i18n="foot.support">Apoio</a>
+        <span data-i18n="foot.credit">Dados: MaleCNS v1.0 (FlyEM / HHMI Janelia), CC BY 4.0. Fonte Archivo (OFL).</span>
+      </footer>
+    </div>
+  </div>
+  <div id="backbar"><a href="#" id="backdesk" data-i18n="back">← Página</a></div>
+  <div id="unity-container"><canvas id="unity-canvas" tabindex="-1"></canvas></div>
+  <div id="loading">
+    <h1><span>THAT</span>DAMN FLY</h1>
+    <div id="bar"><div id="barfill"></div></div>
+    <div id="status"><span data-i18n="load.status">A carregar o jogo…</span> <span id="pct">0%</span></div>
+    <div id="warn"><span data-i18n="load.warn">Parece que abriste o link dentro de outra app (Instagram/TikTok/…). Se o jogo não arrancar, abre-o no <b>Safari</b> ou no <b>Chrome</b>.</span><br><button id="copy" data-i18n="load.copy">Copiar ligação</button></div>
+    <div id="err"><span id="errtext"></span><button onclick="location.reload()" data-i18n="load.retry">Tentar novamente</button></div>
+  </div>
+  <script>
+    (function () {
+      var SHOT_V = "{{{ PRODUCT_VERSION }}}";   // cache-buster for the screenshots (their file names do not change between releases)
+      // ---------- texts in PT, EN and ES ----------
+      var I18N = {
+        pt: {
+          "nav.game": "O jogo", "nav.how": "Como jogar", "nav.sci": "A ciência", "nav.terms": "Termos",
+          "nav.made": "Como foi feito",
+          "game.c3h": "Os objetos, na tua mão",
+          "game.c3": "Pano, frigideira, frigorífico, chinelo, geleira, sofá… Arrasta-os do cenário para uma mão em primeira pessoa e atira. Os grandes só quando a fúria sobe.",
+          "game.c6h": "Bónus: a cara",
+          "game.c6": "Ganha uma estrela e tens 20 s para afastar as moscas da cara de uma personagem - o Zé, a Dona Amélia, o Tiago, o avô Anselmo ou o chef Rui. Cada falha cai-lhes na cara: reagem, ficam vermelhos e rebentam.",
+          "game.c2": "Cozinha, esplanada, praia, piquenique, quintal, sala e casa de banho. Três pedidos em cada um; uma estrela abre o seguinte; no fim espera a mosca-chefe.",
+          "game.c5": "A mesma mosca para toda a gente, todos os dias. Recordes, repetição da melhor captura, cartão para partilhar - e uma coleção de moscas com títulos.",
+          "shot.5": "Bónus: afasta as moscas da cara",
+          "how.4": "Cumpre os pedidos, ganha estrelas, abre o cenário seguinte - cada estrela nova dá direito ao bónus da cara. Na casa de banho, apanha a chefe e fecha o dia.",
+          "made.h": "Como foi feito",
+          "made.lead": "Um projeto de Miguel Prego, feito com dois assistentes de IA.",
+          "made.c1h": "Miguel Prego - direção",
+          "made.c1": "Direção, decisões e aceitação de cada versão.",
+          "made.c2h": "GPT‑6 Astra - estrutura e ciência",
+          "made.c2": "A estrutura funcional, técnica e de design do projeto, e a análise científica.",
+          "made.c3h": "Claude Opus 5 - implementação",
+          "made.c3": "A extração do circuito, o simulador FlyCore, o codificador sensorial e o corpo, o jogo em Unity, a arte e os sons gerados por scripts, este site.",
+          "made.oss": "<b>Código aberto.</b> O código está sob licença MIT e os conteúdos (arte, sons, música, textos) sob CC BY 4.0: <a href=\"https://github.com/T-Miguel/ThatDamnFly\">github.com/T-Miguel/ThatDamnFly</a>. O nome e o logótipo identificam o jogo oficial.",
+          "foot.rights": "código MIT · conteúdos CC BY 4.0",
+          "foot.terms": "Termos e licenças",
+          "hero.tag": "Uma mosca. Zero paciência. Um jogo de vingança doméstica - com uma mosca que tem um cérebro a sério.",
+          "hero.sub": "Ela vê o objeto a descer e foge - porque a fuga é decidida por um circuito de 816 neurónios copiado do cérebro de uma mosca-da-fruta real. Bate onde ela VAI estar, não onde está.",
+          "hero.play": "Jogar aqui no computador", "hero.play.m": "Jogar agora", "hero.sci": "Como funciona o cérebro", "hero.b1": "Grátis na web", "hero.b2": "Sem anúncios", "hero.b3": "Sem contas", "hero.b4": "PT · EN",
+          "hero.qr": "<b>Melhor no telemóvel.</b><br>Aponta a câmara ao código ou abre <b>thatdamnfly.com</b> no Safari/Chrome.",
+          "game.h": "O jogo", "game.lead": "Sessenta segundos, uma cozinha, uma mosca que não te larga. Cada captura dá tempo extra - e cada falhanço dá fúria.",
+          "game.c1h": "Um cérebro a sério", "game.c1": "A fuga não é um guião: é um circuito neural derivado de um conectoma real. O ícone do cérebro acende no momento em que ela te viu.",
+          "game.c2h": "O Dia: sete cenários",
+          "game.c4h": "Fúria e combos", "game.c4": "Falhar irrita. A fúria abre objetos maiores; capturas seguidas fazem combos e dão tempo extra. Ao combo ×3 ganhas uma isca.",
+          "game.c5h": "Mosca do dia",
+          "shot.1": "Escolhe o cenário", "shot.2": "Na cozinha, com o pano na mão", "shot.3": "A mosca-chefe na casa de banho", "shot.4": "Pedidos, estrelas e a ficha da ronda",
+          "how.h": "Como jogar", "how.lead": "Não é preciso tutorial - mas isto ajuda.",
+          "how.1": "Toca perto da mosca. Ela vê o objeto a descer e foge - por isso bate onde ela <b>vai</b> estar.",
+          "how.2": "Para trocar de objeto, arrasta-o do cenário para a mão, cá em baixo. Um toque é sempre um ataque.",
+          "how.3": "A fúria sobe com os falhanços: aos 25 abrem os objetos médios, aos 60 os gigantes (prime, mira, larga).",
+          "sci.h": "A ciência", "sci.lead": "A mosca do jogo não segue um guião. Cada vez que um objeto se aproxima, um modelo neural - construído a partir de um cérebro real - decide se foge e para onde.",
+          "sci.1h": "De onde vem o cérebro", "sci.1": "Do <a href=\"https://male-cns.janelia.org/download/\">MaleCNS v1.0</a> (FlyEM / HHMI Janelia): o conectoma - o mapa de todos os neurónios e das suas sinapses - do sistema nervoso central de uma mosca-da-fruta macho (<i>Drosophila melanogaster</i>), publicado sob licença <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>.",
+          "sci.2h": "O que extraímos", "sci.2": "Um circuito de <b>816 neurónios</b> e <b>38 521 ligações</b> em torno das vias visuais de fuga: os neurónios de projeção visual que respondem a objetos a crescer no campo de visão («looming») e os neurónios descendentes que comandam a fuga - incluindo a famosa <i>Giant Fiber</i>.",
+          "sci.3h": "Como corre no teu telemóvel", "sci.3": "Um codificador sensorial transforma cada objeto que se aproxima em sinais de «looming» por setor do campo visual. O <b>FlyCore</b>, um simulador de neurónios com disparo (<i>spiking</i>) escrito em C++, avança o circuito em passos de 10 ms, em tempo real. A atividade dos neurónios descendentes, esquerda e direita, move um corpo virtual: para trás e para o lado oposto ao estímulo. A mosca não recebe a posição do dedo, o objeto escolhido nem a fúria - só o que «vê».",
+          "pipe.1h": "Cenário", "pipe.1": "objeto a descer, margens", "pipe.2h": "Codificador", "pipe.2": "looming por setor visual", "pipe.3": "816 neurónios, passos de 10 ms", "pipe.4h": "Corpo", "pipe.4": "fuga esquerda/direita, vaguear, poisos",
+          "sci.brain": "No jogo, o ícone do cérebro acende quando os neurónios de fuga do modelo disparam - é o momento exato em que a mosca «te viu». A ficha da ronda diz em quantos ataques te viu e com que reflexo.",
+          "sci.5h": "O que não é", "sci.5": "Não é um cérebro completo, não é um animal vivo, não sente dor e não aprende entre partidas. Os parâmetros dinâmicos (limiares, constantes de tempo, o corpo) foram escolhidos por nós. Os autores dos dados não patrocinam nem validaram este jogo.",
+          "ev.h": "Testámos se é mesmo o circuito que decide", "ev.p": "Protocolo pré-registado, 12 000 ensaios, cinco condições, corrido com o mesmo simulador do jogo.",
+          "ev.big": "das vezes a mosca foge de um objeto a aproximar-se de frente ou de lado, com o circuito intacto.",
+          "ev.r1": "Circuito intacto", "ev.r2": "Ligações visuais → descendentes cortadas", "ev.r3": "Pesos das ligações baralhados", "ev.r3v": "sem resposta dirigida", "ev.r4": "Saída motora desligada", "ev.r4v": "só vaguear",
+          "ev.ok": "Todos os critérios pré-registados passaram. Os 36 % restantes são o vaguear normal da mosca, não uma fuga.", "ev.more": "Página da ciência, com fontes", "ev.model": "pacote neural (público, sem DRM)", "foot.sci": "Ciência e fontes", "foot.priv": "Privacidade", "foot.support": "Apoio", "foot.credit": "Dados: MaleCNS v1.0 (FlyEM / HHMI Janelia), CC BY 4.0. Fonte Archivo (OFL).",
+          "back": "← Página", "load.status": "A carregar o jogo…", "load.warn": "Parece que abriste o link dentro de outra app (Instagram/TikTok/…). Se o jogo não arrancar, abre-o no <b>Safari</b> ou no <b>Chrome</b>.", "load.copy": "Copiar ligação", "load.copied": "Ligação copiada", "load.retry": "Tentar novamente", "load.fail": "Não foi possível carregar o jogo: ", "load.net": "Não foi possível obter o carregador do jogo (rede?).",
+          "meta": "Uma mosca. Zero paciência. Um jogo de vingança doméstica com uma mosca controlada por um circuito neural derivado de um conectoma real.", "title": "That Damn Fly - uma mosca com um cérebro a sério"
+        },
+        en: {
+          "nav.game": "The game", "nav.how": "How to play", "nav.sci": "The science", "nav.terms": "Terms",
+          "nav.made": "How it was made",
+          "game.c3h": "The objects, in your hand",
+          "game.c3": "Cloth, pan, fridge, flip-flop, cooler, sofa… Drag them from the scene into a first-person hand and throw. The big ones only when fury rises.",
+          "game.c6h": "Bonus: the face",
+          "game.c6": "Earn a star and you get 20 s to keep the flies off someone's face - Zé, Mrs. Amélia, Tiago, Grandpa Anselmo or Chef Rui. Every miss lands on their face: they react, turn red and blow up.",
+          "game.c2": "Kitchen, café terrace, beach, picnic, backyard, living room and bathroom. Three requests each; one star opens the next; the boss fly waits at the end.",
+          "game.c5": "The same fly for everyone, every day. Records, replay of your best catch, a card to share - and a fly collection with titles.",
+          "shot.5": "Bonus: keep the flies off his face",
+          "how.4": "Complete the requests, earn stars, open the next scene - every new star unlocks the face bonus. In the bathroom, catch the boss and close the day.",
+          "made.h": "How it was made",
+          "made.lead": "A project by Miguel Prego, made with two AI assistants.",
+          "made.c1h": "Miguel Prego - direction",
+          "made.c1": "Direction, decisions and acceptance of every version.",
+          "made.c2h": "GPT‑6 Astra - structure and science",
+          "made.c2": "The functional, technical and design structure of the project, and the scientific analysis.",
+          "made.c3h": "Claude Opus 5 - implementation",
+          "made.c3": "Extracting the circuit, the FlyCore simulator, the sensory encoder and the body, the Unity game, the script-generated art and sound, this site.",
+          "made.oss": "<b>Open source.</b> The code is under the MIT licence and the content (art, sounds, music, texts) under CC BY 4.0: <a href=\"https://github.com/T-Miguel/ThatDamnFly\">github.com/T-Miguel/ThatDamnFly</a>. The name and logo identify the official game.",
+          "foot.rights": "MIT code · CC BY 4.0 content",
+          "foot.terms": "Terms & licences",
+          "hero.tag": "One fly. Zero patience. A game of domestic revenge - against a fly with a real brain.",
+          "hero.sub": "It sees the object coming down and flees - because the escape is decided by a circuit of 816 neurons copied from the brain of a real fruit fly. Swat where it WILL be, not where it is.",
+          "hero.play": "Play here on your computer", "hero.play.m": "Play now", "hero.sci": "How the brain works", "hero.b1": "Free on the web", "hero.b2": "No ads", "hero.b3": "No accounts", "hero.b4": "PT · EN",
+          "hero.qr": "<b>Best on your phone.</b><br>Point your camera at the code or open <b>thatdamnfly.com</b> in Safari/Chrome.",
+          "game.h": "The game", "game.lead": "Sixty seconds, one kitchen, one fly that won't leave you alone. Every catch adds time - and every miss adds fury.",
+          "game.c1h": "A real brain", "game.c1": "The escape isn't scripted: it's a neural circuit derived from a real connectome. The brain icon lights up the moment it saw you.",
+          "game.c2h": "The Day: seven scenes",
+          "game.c4h": "Fury and combos", "game.c4": "Missing hurts. Fury unlocks bigger objects; consecutive catches make combos and add time. At a ×3 combo you earn bait.",
+          "game.c5h": "Fly of the day",
+          "shot.1": "Pick a scene", "shot.2": "In the kitchen, cloth in hand", "shot.3": "The boss fly in the bathroom", "shot.4": "Requests, stars and the round sheet",
+          "how.h": "How to play", "how.lead": "No tutorial needed - but this helps.",
+          "how.1": "Tap near the fly. It sees the object coming and flees - so swat where it <b>will</b> be.",
+          "how.2": "To switch objects, drag one from the scene to your hand, down here. A tap is always an attack.",
+          "how.3": "Fury rises with every miss: at 25 the medium objects open, at 60 the giants (press, aim, release).",
+          "sci.h": "The science", "sci.lead": "The fly in the game doesn't follow a script. Every time an object approaches, a neural model - built from a real brain - decides whether to flee, and where.",
+          "sci.1h": "Where the brain comes from", "sci.1": "From <a href=\"https://male-cns.janelia.org/download/\">MaleCNS v1.0</a> (FlyEM / HHMI Janelia): the connectome - the map of every neuron and its synapses - of the central nervous system of a male fruit fly (<i>Drosophila melanogaster</i>), published under the <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a> licence.",
+          "sci.2h": "What we extracted", "sci.2": "A circuit of <b>816 neurons</b> and <b>38,521 connections</b> around the visual escape pathways: the visual projection neurons that respond to objects growing in the field of view (\"looming\") and the descending neurons that command the escape - including the famous <i>Giant Fiber</i>.",
+          "sci.3h": "How it runs on your phone", "sci.3": "A sensory encoder turns every approaching object into looming signals per sector of the visual field. <b>FlyCore</b>, a spiking-neuron simulator written in C++, advances the circuit in 10 ms steps, in real time. The activity of the left and right descending neurons moves a virtual body: backwards and away from the stimulus. The fly never receives the position of your finger, the chosen object or the fury - only what it \"sees\".",
+          "pipe.1h": "Scene", "pipe.1": "object coming down, edges", "pipe.2h": "Encoder", "pipe.2": "looming per visual sector", "pipe.3": "816 neurons, 10 ms steps", "pipe.4h": "Body", "pipe.4": "left/right escape, wandering, landings",
+          "sci.brain": "In the game, the brain icon lights up when the model's escape neurons fire - the exact moment the fly \"saw you\". The round sheet tells you in how many attacks it saw you, and how fast.",
+          "sci.5h": "What it is not", "sci.5": "It is not a complete brain, not a living animal, it feels no pain and does not learn between rounds. The dynamic parameters (thresholds, time constants, the body) were chosen by us. The data authors do not sponsor and have not validated this game.",
+          "ev.h": "We tested whether the circuit really decides", "ev.p": "Pre-registered protocol, 12,000 trials, five conditions, run on the same simulator the game uses.",
+          "ev.big": "of the time the fly flees from an object approaching from the front or the side, with the circuit intact.",
+          "ev.r1": "Intact circuit", "ev.r2": "Visual → descending connections cut", "ev.r3": "Connection weights shuffled", "ev.r3v": "no directed response", "ev.r4": "Motor output disabled", "ev.r4v": "wandering only",
+          "ev.ok": "Every pre-registered criterion passed. The remaining 36% is the fly's normal wandering, not an escape.", "ev.more": "Science page, with sources", "ev.model": "neural package (public, no DRM)", "foot.sci": "Science & sources", "foot.priv": "Privacy", "foot.support": "Support", "foot.credit": "Data: MaleCNS v1.0 (FlyEM / HHMI Janelia), CC BY 4.0. Archivo font (OFL).",
+          "back": "← Back", "load.status": "Loading the game…", "load.warn": "It looks like you opened the link inside another app (Instagram/TikTok/…). If the game doesn't start, open it in <b>Safari</b> or <b>Chrome</b>.", "load.copy": "Copy link", "load.copied": "Link copied", "load.retry": "Try again", "load.fail": "Could not load the game: ", "load.net": "Could not fetch the game loader (network?).",
+          "meta": "One fly. Zero patience. A game of domestic revenge against a fly driven by a neural circuit derived from a real connectome.", "title": "That Damn Fly - a fly with a real brain"
+        },
+        es: {
+          "nav.game": "El juego", "nav.how": "Cómo jugar", "nav.sci": "La ciencia", "nav.terms": "Términos",
+          "nav.made": "Cómo se hizo",
+          "game.c3h": "Los objetos, en tu mano",
+          "game.c3": "Trapo, sartén, nevera, chancla, nevera portátil, sofá… Arrástralos del escenario a una mano en primera persona y lánzalos. Los grandes, solo cuando sube la furia.",
+          "game.c6h": "Bonus: la cara",
+          "game.c6": "Gana una estrella y tendrás 20 s para espantar las moscas de la cara de un personaje - Zé, Doña Amélia, Tiago, el abuelo Anselmo o el chef Rui. Cada fallo les cae en la cara: reaccionan, se ponen rojos y explotan.",
+          "game.c2": "Cocina, terraza, playa, pícnic, patio, salón y cuarto de baño. Tres encargos en cada uno; una estrella abre el siguiente; al final espera la mosca jefa.",
+          "game.c5": "La misma mosca para todo el mundo, cada día. Récords, repetición de tu mejor captura, tarjeta para compartir - y una colección de moscas con títulos.",
+          "shot.5": "Bonus: espanta las moscas de la cara",
+          "how.4": "Cumple los encargos, gana estrellas, abre el siguiente escenario - cada estrella nueva da derecho al bonus de la cara. En el baño, atrapa a la jefa y cierra el día.",
+          "made.h": "Cómo se hizo",
+          "made.lead": "Un proyecto de Miguel Prego, hecho con dos asistentes de IA.",
+          "made.c1h": "Miguel Prego - dirección",
+          "made.c1": "Dirección, decisiones y aceptación de cada versión.",
+          "made.c2h": "GPT‑6 Astra - estructura y ciencia",
+          "made.c2": "La estructura funcional, técnica y de diseño del proyecto, y el análisis científico.",
+          "made.c3h": "Claude Opus 5 - implementación",
+          "made.c3": "La extracción del circuito, el simulador FlyCore, el codificador sensorial y el cuerpo, el juego en Unity, el arte y los sonidos generados por scripts, este sitio.",
+          "made.oss": "<b>Código abierto.</b> El código está bajo licencia MIT y los contenidos (arte, sonidos, música, textos) bajo CC BY 4.0: <a href=\"https://github.com/T-Miguel/ThatDamnFly\">github.com/T-Miguel/ThatDamnFly</a>. El nombre y el logotipo identifican el juego oficial.",
+          "foot.rights": "código MIT · contenidos CC BY 4.0",
+          "foot.terms": "Términos y licencias",
+          "hero.tag": "Una mosca. Cero paciencia. Un juego de venganza doméstica - contra una mosca con un cerebro de verdad.",
+          "hero.sub": "Ve el objeto bajar y huye - porque la huida la decide un circuito de 816 neuronas copiado del cerebro de una mosca de la fruta real. Golpea donde VA a estar, no donde está.",
+          "hero.play": "Jugar aquí en el ordenador", "hero.play.m": "Jugar ahora", "hero.sci": "Cómo funciona el cerebro", "hero.b1": "Gratis en la web", "hero.b2": "Sin anuncios", "hero.b3": "Sin cuentas", "hero.b4": "PT · EN",
+          "hero.qr": "<b>Mejor en el móvil.</b><br>Apunta la cámara al código o abre <b>thatdamnfly.com</b> en Safari/Chrome.",
+          "game.h": "El juego", "game.lead": "Sesenta segundos, una cocina, una mosca que no te deja en paz. Cada captura da tiempo extra - y cada fallo da furia.",
+          "game.c1h": "Un cerebro de verdad", "game.c1": "La huida no es un guion: es un circuito neuronal derivado de un conectoma real. El icono del cerebro se enciende en el momento en que te ha visto.",
+          "game.c2h": "El Día: siete escenarios",
+          "game.c4h": "Furia y combos", "game.c4": "Fallar irrita. La furia abre objetos más grandes; las capturas seguidas hacen combos y dan tiempo extra. Con un combo ×3 ganas un cebo.",
+          "game.c5h": "Mosca del día",
+          "shot.1": "Elige el escenario", "shot.2": "En la cocina, con el trapo en la mano", "shot.3": "La mosca jefa en el baño", "shot.4": "Encargos, estrellas y la ficha de la ronda",
+          "how.h": "Cómo jugar", "how.lead": "No hace falta tutorial - pero esto ayuda.",
+          "how.1": "Toca cerca de la mosca. Ve el objeto bajar y huye - así que golpea donde <b>va</b> a estar.",
+          "how.2": "Para cambiar de objeto, arrástralo del escenario a la mano, aquí abajo. Un toque siempre es un ataque.",
+          "how.3": "La furia sube con cada fallo: a 25 se abren los objetos medianos, a 60 los gigantes (pulsa, apunta, suelta).",
+          "sci.h": "La ciencia", "sci.lead": "La mosca del juego no sigue un guion. Cada vez que un objeto se acerca, un modelo neuronal - construido a partir de un cerebro real - decide si huye y hacia dónde.",
+          "sci.1h": "De dónde viene el cerebro", "sci.1": "De <a href=\"https://male-cns.janelia.org/download/\">MaleCNS v1.0</a> (FlyEM / HHMI Janelia): el conectoma - el mapa de todas las neuronas y sus sinapsis - del sistema nervioso central de una mosca de la fruta macho (<i>Drosophila melanogaster</i>), publicado bajo licencia <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>.",
+          "sci.2h": "Qué extrajimos", "sci.2": "Un circuito de <b>816 neuronas</b> y <b>38 521 conexiones</b> alrededor de las vías visuales de huida: las neuronas de proyección visual que responden a objetos que crecen en el campo de visión («looming») y las neuronas descendentes que ordenan la huida - incluida la famosa <i>Giant Fiber</i>.",
+          "sci.3h": "Cómo corre en tu móvil", "sci.3": "Un codificador sensorial convierte cada objeto que se acerca en señales de «looming» por sector del campo visual. <b>FlyCore</b>, un simulador de neuronas con disparo (<i>spiking</i>) escrito en C++, avanza el circuito en pasos de 10 ms, en tiempo real. La actividad de las neuronas descendentes, izquierda y derecha, mueve un cuerpo virtual: hacia atrás y hacia el lado opuesto al estímulo. La mosca no recibe la posición del dedo, el objeto elegido ni la furia - solo lo que «ve».",
+          "pipe.1h": "Escenario", "pipe.1": "objeto que baja, bordes", "pipe.2h": "Codificador", "pipe.2": "looming por sector visual", "pipe.3": "816 neuronas, pasos de 10 ms", "pipe.4h": "Cuerpo", "pipe.4": "huida izquierda/derecha, deambular, posarse",
+          "sci.brain": "En el juego, el icono del cerebro se enciende cuando disparan las neuronas de huida del modelo - el momento exacto en que la mosca «te ha visto». La ficha de la ronda dice en cuántos ataques te vio y con qué reflejo.",
+          "sci.5h": "Lo que no es", "sci.5": "No es un cerebro completo, no es un animal vivo, no siente dolor y no aprende entre partidas. Los parámetros dinámicos (umbrales, constantes de tiempo, el cuerpo) los elegimos nosotros. Los autores de los datos no patrocinan ni han validado este juego.",
+          "ev.h": "Comprobamos si de verdad decide el circuito", "ev.p": "Protocolo prerregistrado, 12 000 ensayos, cinco condiciones, ejecutado con el mismo simulador del juego.",
+          "ev.big": "de las veces la mosca huye de un objeto que se acerca de frente o de lado, con el circuito intacto.",
+          "ev.r1": "Circuito intacto", "ev.r2": "Conexiones visuales → descendentes cortadas", "ev.r3": "Pesos de las conexiones barajados", "ev.r3v": "sin respuesta dirigida", "ev.r4": "Salida motora desconectada", "ev.r4v": "solo deambular",
+          "ev.ok": "Todos los criterios prerregistrados se cumplieron. El 36 % restante es el deambular normal de la mosca, no una huida.", "ev.more": "Página de la ciencia, con fuentes", "ev.model": "paquete neuronal (público, sin DRM)", "foot.sci": "Ciencia y fuentes", "foot.priv": "Privacidad", "foot.support": "Soporte", "foot.credit": "Datos: MaleCNS v1.0 (FlyEM / HHMI Janelia), CC BY 4.0. Fuente Archivo (OFL).",
+          "back": "← Volver", "load.status": "Cargando el juego…", "load.warn": "Parece que abriste el enlace dentro de otra app (Instagram/TikTok/…). Si el juego no arranca, ábrelo en <b>Safari</b> o en <b>Chrome</b>.", "load.copy": "Copiar enlace", "load.copied": "Enlace copiado", "load.retry": "Intentar de nuevo", "load.fail": "No se pudo cargar el juego: ", "load.net": "No se pudo obtener el cargador del juego (¿red?).",
+          "meta": "Una mosca. Cero paciencia. Un juego de venganza doméstica contra una mosca gobernada por un circuito neuronal derivado de un conectoma real.", "title": "That Damn Fly - una mosca con un cerebro de verdad"
+        }
+      };
+      var LANGS = { pt: "pt-PT", en: "en", es: "es" };
+      var T = I18N.pt;
+      function pickLang() {
+        var q = /[?&]lang=(pt|en|es)/.exec(location.search); if (q) return q[1];
+        try { var s = localStorage.getItem("tdf-lang"); if (s && I18N[s]) return s; } catch (e) {}
+        var nav = (navigator.languages && navigator.languages[0]) || navigator.language || "pt"; nav = nav.toLowerCase();
+        return nav.indexOf("pt") === 0 ? "pt" : (nav.indexOf("es") === 0 ? "es" : "en");
+      }
+      function applyLang(code) {
+        T = I18N[code] || I18N.pt; document.documentElement.lang = LANGS[code] || "pt-PT";
+        var els = document.querySelectorAll("[data-i18n]");
+        for (var i = 0; i < els.length; i++) { var k = els[i].getAttribute("data-i18n"); if (T[k] != null) els[i].innerHTML = T[k]; }
+        var btns = document.querySelectorAll("#lang button"); for (var j = 0; j < btns.length; j++) btns[j].setAttribute("aria-pressed", btns[j].getAttribute("data-lang") === code ? "true" : "false");
+        var m = document.querySelector('meta[name="description"]'); if (m) m.setAttribute("content", T.meta); document.title = T.title || "That Damn Fly";
+        if (window.tdfMobile) document.getElementById("playdesk").innerHTML = T["hero.play.m"];
+        var shots = document.querySelectorAll("img[data-shot]"); for (var s = 0; s < shots.length; s++) shots[s].src = "TemplateData/shots/" + (code === "pt" ? "pt" : "en") + "/" + shots[s].getAttribute("data-shot") + ".jpg?v=" + SHOT_V;   // capturas na língua do jogo (PT ou EN)
+        try { localStorage.setItem("tdf-lang", code); } catch (e) {}
+      }
+      var lang = pickLang(); applyLang(lang);
+      var lb = document.querySelectorAll("#lang button"); for (var b = 0; b < lb.length; b++) lb[b].addEventListener("click", function () { applyLang(this.getAttribute("data-lang")); });
+
+      var ua = navigator.userAgent || "";
+      var inApp = /FBAN|FBAV|Instagram|Line\/|musical_ly|Bytedance|TikTok|Twitter|Snapchat/i.test(ua);
+      if (inApp) { document.getElementById("warn").style.display = "block"; }
+      document.getElementById("copy").addEventListener("click", function () {
+        var url = location.href.split("#")[0];
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function(){ document.getElementById("copy").textContent = T["load.copied"]; }, function(){ prompt("URL:", url); });
+        else prompt("URL:", url);
+      });
+      var canvas = document.getElementById("unity-canvas");
+      // computador (rato, ecrã largo) → página de apresentação e jogo em moldura ao alto; telemóvel → jogo a ecrã inteiro (a página só com #sobre)
+      var mobile = /Android|iPhone|iPad|iPod|Mobile|Silk/i.test(ua) || (navigator.maxTouchPoints > 1 && Math.min(window.innerWidth, window.innerHeight) < 900);
+      var force = /[?&]ui=(m|d)(?:&|$)/.exec(location.search); if (force) mobile = force[1] === "m";   // ?ui=m / ?ui=d para testes
+      var about = /(^|[#?&])sobre(&|$)/.test(location.hash) || /[?&]sobre(&|$)/.test(location.search);
+      var showLanding = !mobile || about; window.tdfMobile = mobile; if (mobile) applyLang(lang);
+      function sizeFrame() {
+        var h = Math.min(window.innerHeight - 40, 900), w = Math.round(h * 390 / 844);
+        document.documentElement.style.setProperty("--fw", w + "px"); document.documentElement.style.setProperty("--fh", h + "px");
+      }
+      if (showLanding) { document.body.classList.add("landing"); if (mobile) document.body.classList.add("mobileplay"); sizeFrame(); window.addEventListener("resize", sizeFrame); }
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_THREADS
+        workerUrl: buildUrl + "/{{{ WORKER_FILENAME }}}",
+#endif
+#if USE_WASM
+        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#endif
+#if MEMORY_FILENAME
+        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+        productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+        productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+        showBanner: function (msg, type) { if (type === "error") { document.getElementById("errtext").textContent = msg; document.getElementById("err").style.display = "block"; } else { console.log("[Unity] " + msg); } }
+      };
+      // resolução: limitar DPR para poupar GPU em telemóveis; medir antes de subir
+      config.devicePixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      var started = false;
+      function start() {
+        if (started) return; started = true;
+        if (showLanding) { document.body.classList.add("playing"); sizeFrame(); window.scrollTo(0, 0); }
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = function () {
+          createUnityInstance(canvas, config, function (p) {
+            document.getElementById("barfill").style.width = Math.round(p * 100) + "%";
+            document.getElementById("pct").textContent = Math.round(p * 100) + "%";
+          }).then(function (unityInstance) {
+            window.tdfUnity = unityInstance;
+            document.getElementById("loading").style.display = "none";
+            document.addEventListener("visibilitychange", function () { try { unityInstance.SendMessage("Bootstrap", "OnVisibility", document.hidden ? "hidden" : "visible"); } catch (e) {} });
+          }).catch(function (message) { document.getElementById("errtext").textContent = T["load.fail"] + message; document.getElementById("err").style.display = "block"; });
+        };
+        script.onerror = function () { document.getElementById("errtext").textContent = T["load.net"]; document.getElementById("err").style.display = "block"; };
+        document.body.appendChild(script);
+      }
+      if (showLanding) {
+        document.getElementById("playdesk").addEventListener("click", function (e) { e.preventDefault(); start(); });
+        document.getElementById("backdesk").addEventListener("click", function (e) { e.preventDefault(); location.href = location.pathname; });
+        if (location.hash === "#jogar") start();
+      } else start();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "tdf-art-tools",
+  "private": true,
+  "description": "Art export tools (SVG → PNG) - development only, not shipped with the game",
+  "type": "module",
+  "dependencies": { "sharp": "^0.34.0" }
+}

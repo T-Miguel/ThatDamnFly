@@ -1,0 +1,33 @@
+{
+  "params_version": "p2",
+  "notes": "H4: parâmetros LIF de Shiu & Spiller (MIT; valores publicados como ponto de partida), escala de pesos e entradas calibradas só em estímulo frontal (ver docs/CAUSAL_PROTOCOL.md §5 e calibration.md). Não são medidas biofísicas da MaleCNS. p2: ganho de entrada normalizado por hemisfério (H1b) após o piloto revelar assimetria L/R de contagem (LC4 71 L vs 55 R).",
+  "lif": {
+    "v_rest": -52.0,
+    "v_thresh": -45.0,
+    "v_reset": -52.0,
+    "tau_m_ms": 20.0,
+    "t_ref_ms": 2.0,
+    "tau_syn_ms": 5.0,
+    "bias_mv": 3.0
+  },
+  "synapse": {
+    "w_syn_mv": 0.275,
+    "w_scale": 0.1,
+    "w_cap_mv": 30.0,
+    "delay_ms": 2
+  },
+  "input": {
+    "background_rate_per_ms": 0.02,
+    "background_weight_mv": 6.0,
+    "vpn_rate_per_ms": 0.12,
+    "vpn_weight_mv": 24.0,
+    "rear_gain": 0.3,
+    "normalize_side_counts": true
+  },
+  "output": {
+    "tau_escape_ms": 30.0,
+    "tau_turn_ms": 60.0,
+    "tau_fwd_ms": 100.0,
+    "scale_per_100hz": 1.0
+  }
+}

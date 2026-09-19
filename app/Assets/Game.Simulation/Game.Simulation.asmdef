@@ -1,0 +1,14 @@
+{
+  "name": "Game.Simulation",
+  "rootNamespace": "ThatDamnFly.Simulation",
+  "references": ["Game.Domain"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": true,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

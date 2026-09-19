@@ -1,0 +1,19 @@
+[project]
+name = "tdf-research"
+version = "0.1.0"
+description = "That Damn Fly - MaleCNS import, circuit extraction, numeric reference and causal trial (outside the app)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "numpy>=2.0",
+  "pyarrow>=17",
+  "pandas>=2.2",
+  "polars>=1.0",
+  "scipy>=1.13",
+  "matplotlib>=3.9",
+  "pytest>=8",
+  "tabulate>=0.10.0",
+  "fonttools>=4.65.0",
+]
+
+[tool.uv]
+package = false

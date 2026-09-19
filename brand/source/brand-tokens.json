@@ -1,0 +1,15 @@
+{
+  "brand": "That Damn Fly",
+  "domain": "thatdamnfly.com",
+  "version": "1.0",
+  "colors": {
+    "ink": "#202622",
+    "paper": "#F7F0DE",
+    "yellow": "#F4CD3C",
+    "eyes": "#AF3D2F",
+    "info": "#2755A5"
+  },
+  "logoFont": "Archivo Black",
+  "uiFont": "Archivo",
+  "accessibleName": "That Damn Fly"
+}

@@ -1,0 +1,105 @@
+{
+  "model_id": "tdf-escape-v0.1-p2",
+  "generated": "2026-09-13T22:28:47",
+  "exporter_commit": "236ea7f58cd6a64c47610c3d5b968d544e1ee5d7",
+  "source": {
+    "dataset": "male-cns",
+    "version": "1.0",
+    "license": "CC-BY-4.0",
+    "files": [
+      {
+        "name": "body-annotations-male-cns-v1.0-minconf-0.5.feather",
+        "sha256": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2"
+      },
+      {
+        "name": "body-neurotransmitters-male-cns-v1.0.feather",
+        "sha256": "95c9289220663abeb3409f3ad9e5a7f8a53f8093f5139d15502cd08da8879621"
+      },
+      {
+        "name": "connectome-weights-male-cns-v1.0-minconf-0.5.feather",
+        "sha256": "e35da783d1c686b2b58b3b87cd6a403ae43bfcfba8bff28e08ef752c1a56afc1"
+      }
+    ]
+  },
+  "selection": {
+    "vpn_types": {
+      "LC4": "expansion",
+      "LPLC2": "angular_size",
+      "LPLC1": "expansion",
+      "LPLC4": "expansion"
+    },
+    "vpn_gain": {
+      "LC4": 1.0,
+      "LPLC2": 1.0,
+      "LPLC1": 0.5,
+      "LPLC4": 0.5
+    },
+    "dn_types": [
+      "DNp01",
+      "DNp02",
+      "DNp03",
+      "DNp04",
+      "DNp06",
+      "DNp11"
+    ],
+    "escape_dn": [
+      "DNp01",
+      "DNp02",
+      "DNp04",
+      "DNp11"
+    ],
+    "turn_dn": [
+      "DNp03",
+      "DNp06"
+    ],
+    "interneuron_rule": "Traced, typed, not in seeds, sum(VPN→X)≥30 and sum(X→DN)≥30, top 600 by sum",
+    "edge_rule": "weight≥3 synapses between selected bodies; sign from consensus_nt (fallback celltype_predicted_nt); ACh +1, GABA −1, Glu −1, other/unknown excluded",
+    "sector_rule": "H1: per (type, side), cyclic assignment by ascending bodyId over LEFT_SECTORS [0,1,2,3] / RIGHT_SECTORS [0,7,6,5]",
+    "boundary_cuts": "all inputs to the selected set from non-selected bodies are dropped (replaced by background drive); this is a documented simplification"
+  },
+  "params": {
+    "params_version": "p2",
+    "notes": "H4: parâmetros LIF de Shiu & Spiller (MIT; valores publicados como ponto de partida), escala de pesos e entradas calibradas só em estímulo frontal (ver docs/CAUSAL_PROTOCOL.md §5 e calibration.md). Não são medidas biofísicas da MaleCNS. p2: ganho de entrada normalizado por hemisfério (H1b) após o piloto revelar assimetria L/R de contagem (LC4 71 L vs 55 R).",
+    "lif": {
+      "v_rest": -52.0,
+      "v_thresh": -45.0,
+      "v_reset": -52.0,
+      "tau_m_ms": 20.0,
+      "t_ref_ms": 2.0,
+      "tau_syn_ms": 5.0,
+      "bias_mv": 3.0
+    },
+    "synapse": {
+      "w_syn_mv": 0.275,
+      "w_scale": 0.1,
+      "w_cap_mv": 30.0,
+      "delay_ms": 2
+    },
+    "input": {
+      "background_rate_per_ms": 0.02,
+      "background_weight_mv": 6.0,
+      "vpn_rate_per_ms": 0.12,
+      "vpn_weight_mv": 24.0,
+      "rear_gain": 0.3,
+      "normalize_side_counts": true
+    },
+    "output": {
+      "tau_escape_ms": 30.0,
+      "tau_turn_ms": 60.0,
+      "tau_fwd_ms": 100.0,
+      "scale_per_100hz": 1.0
+    }
+  },
+  "neuron_count": 816,
+  "edge_count": 38521,
+  "notes": [
+    "IDs de 64 bits como strings",
+    "circuito selecionado e adaptado de um espécime masculino (MaleCNS v1.0, CC BY 4.0)",
+    "parâmetros dinâmicos são escolhas do simulador"
+  ],
+  "file": "tdf-escape-v0.1-p2.tdfm",
+  "bytes": 452132,
+  "payload_sha256": "1d0e44834a61d4bf7af2db5267b8ad9d4c6e674359e4becb0d44ca8d53144e64",
+  "file_sha256": "6ed1086387d81c9ce4508a05768f359c126a6271393b943f9ec941def494b7e8",
+  "license": "CC-BY-4.0 (dados) - ver CREDITS.md"
+}

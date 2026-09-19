@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>That Damn Fly social card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&display=swap">
+<style>
+  @font-face { font-family: "Archivo Black"; src: url("../../brand/fonts/ArchivoBlack-Regular.ttf") format("truetype"); }
+  :root { --ink:#202622; --paper:#F7F0DE; --yellow:#F4CD3C; --eyes:#AF3D2F; --blue:#2755A5; --sage:#CBD3B9; }
+  html, body { margin:0; padding:0; background:var(--paper); }
+  body { width:1200px; height:627px; overflow:hidden; position:relative; font-family:"Archivo", "Segoe UI", sans-serif; color:var(--ink); }
+  body.square { height:1200px; }
+  .tiles { position:absolute; inset:0; background-image:linear-gradient(rgba(32,38,34,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(32,38,34,.06) 1px, transparent 1px); background-size:60px 60px; }
+  .band { position:absolute; left:0; right:0; bottom:0; height:110px; background:var(--sage); opacity:.45; }
+  .text { position:absolute; left:64px; top:110px; width:600px; }
+  .plate { display:inline-block; background:var(--yellow); border:3px solid var(--ink); padding:4px 14px; font-family:"Archivo Black"; font-size:22px; letter-spacing:.06em; transform:rotate(-2deg); box-shadow:4px 4px 0 var(--ink); }
+  h1 { font-family:"Archivo Black"; font-size:62px; line-height:1.02; margin:22px 0 16px; letter-spacing:-.01em; }
+  h1 span { color:var(--eyes); }
+  p.sub { font-size:21px; line-height:1.3; margin:0 0 20px; font-weight:500; max-width:560px; }
+  .pills { display:flex; flex-wrap:wrap; gap:10px; max-width:600px; }
+  .pill { background:#fff; border:3px solid var(--ink); border-radius:999px; padding:7px 15px; font-weight:700; font-size:18px; box-shadow:3px 3px 0 var(--ink); }
+  .pill b { color:var(--blue); }
+  .phones { position:absolute; right:60px; top:46px; width:470px; height:560px; }
+  .phone { position:absolute; width:200px; border:4px solid var(--ink); border-radius:26px; box-shadow:9px 9px 0 var(--ink); background:var(--paper); overflow:hidden; }
+  .phone img { display:block; width:100%; height:auto; }
+  .p1 { left:0; top:40px; transform:rotate(-6deg); z-index:1; }
+  .p2 { left:225px; top:10px; transform:rotate(4deg); z-index:2; }
+  .fly { position:absolute; width:130px; right:-46px; top:-30px; transform:rotate(24deg); z-index:3; }
+  .foot { position:absolute; left:64px; bottom:30px; font-size:19px; font-weight:700; letter-spacing:.02em; }
+  .foot span { color:var(--blue); }
+  .logo { position:absolute; left:64px; top:52px; height:40px; }
+  /* square variant */
+  body.square .text { width:1070px; top:130px; }
+  body.square h1 { font-size:80px; }
+  body.square p.sub { font-size:27px; max-width:1000px; }
+  body.square .pills { max-width:1070px; }
+  body.square .pill { font-size:22px; }
+  body.square .phones { right:auto; left:90px; top:690px; width:1080px; height:440px; }
+  body.square .phone { width:190px; }
+  body.square .p1 { left:0; top:26px; transform:rotate(-5deg); }
+  body.square .p2 { left:240px; top:0; transform:rotate(3deg); }
+  body.square .p3 { left:480px; top:20px; transform:rotate(-2deg); display:block; }
+  body.square .fly { right:auto; left:760px; top:60px; width:180px; }
+  .p3 { display:none; }
+  body.square .foot { bottom:36px; left:auto; right:64px; font-size:22px; }
+  body.square .logo { height:52px; top:64px; }
+  body.square .band { height:150px; }
+</style></head>
+<body>
+  <div class="tiles"></div><div class="band"></div>
+  <div class="text">
+    <div class="plate">DARK FACTORY EXPERIMENT</div>
+    <h1>One human.<br>Two AI agents.<br><span>One weekend.</span></h1>
+    <p class="sub">A game where the fly escapes with a circuit copied from a real fly brain. Shipped, open source, validated. Not one line of code written or reviewed by a human.</p>
+    <div class="pills">
+      <div class="pill"><b>816</b> real neurons</div>
+      <div class="pill"><b>12,000</b> validation trials</div>
+      <div class="pill"><b>21</b> written decisions</div>
+      <div class="pill"><b>2 days</b> of actual work</div>
+    </div>
+  </div>
+  <div class="phones">
+    <div class="phone p1"><img src="../../app/Assets/WebGLTemplates/TDF/TemplateData/shots/en/round.jpg" alt=""></div>
+    <div class="phone p2"><img src="../../app/Assets/WebGLTemplates/TDF/TemplateData/shots/en/face.jpg" alt=""></div>
+    <div class="phone p3"><img src="../../app/Assets/WebGLTemplates/TDF/TemplateData/shots/en/result.jpg" alt=""></div>
+    <img class="fly" src="../../brand/png/fly-color-v1.png" alt="">
+  </div>
+  <div class="foot">thatdamnfly.com · <span>open source</span></div>
+  <img class="logo" src="../../brand/png/logo-horizontal-color-v1.png" alt="">
+</body></html>

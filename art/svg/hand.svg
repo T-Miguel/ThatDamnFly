@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="640" viewBox="0 0 512 640">
+  <!-- open first-person hand (ADR-017): palm facing up with the object resting at the center (256, 380); open fingers behind, thumb on the left -->
+  <defs><linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D2AB"/><stop offset="1" stop-color="#E9B98C"/></linearGradient></defs>
+  <!-- wrist + yellow sleeve -->
+  <path d="M190 640 V520 c0 -30 26 -50 66 -50 s66 20 66 50 V640 Z" fill="url(#skin)" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M176 640 V572 c0 -12 10 -22 22 -22 h116 c12 0 22 10 22 22 V640 Z" fill="#F4CD3C" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <!-- four open fingers (behind the palm): index, middle, ring, little -->
+  <path d="M150 330 c-6 -60 -10 -120 20 -140 c26 -16 52 6 50 40 l6 110 Z" fill="#F1C79E" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M222 320 c-4 -80 -2 -150 30 -166 c28 -12 54 14 50 50 l-4 116 Z" fill="#F1C79E" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M300 326 c0 -70 6 -130 36 -142 c28 -10 50 16 46 52 l-10 96 Z" fill="#F1C79E" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M372 350 c4 -50 14 -90 40 -96 c24 -6 40 18 34 48 l-16 62 Z" fill="#F1C79E" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <!-- palm -->
+  <path d="M132 340 c0 -30 40 -50 124 -50 s150 20 170 50 c14 22 10 110 -20 140 c-30 30 -110 40 -150 40 s-110 -14 -128 -60 c-10 -26 -10 -90 4 -120 Z" fill="url(#skin)" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <!-- thumb on the left, facing up -->
+  <path d="M136 420 c-40 -20 -70 -70 -50 -110 c14 -28 50 -36 74 -14 c20 18 30 60 24 100 c-4 26 -28 38 -48 24 Z" fill="url(#skin)" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <!-- creases -->
+  <path d="M200 400 c40 -18 90 -18 130 0 M216 446 c30 -10 60 -10 90 0" fill="none" stroke="#202622" stroke-width="7" stroke-linecap="round" stroke-opacity="0.35"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="1024" viewBox="0 0 768 1024">
+  <defs><linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8D7B0"/><stop offset="1" stop-color="#EBBE93"/></linearGradient></defs>
+  <rect width="768" height="1024" fill="#EAE4D8"/>
+  <g stroke="#202622" stroke-opacity="0.08" stroke-width="3"><path d="M0 200 H768 M0 400 H768 M0 600 H768 M0 800 H768 M192 0 V1024 M384 0 V1024 M576 0 V1024"/></g>
+  <path d="M40 1024 V930 c0 -70 90 -110 200 -130 h288 c110 20 200 60 200 130 v94 Z" fill="#FFFFFF" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M300 800 l84 90 l84 -90" fill="none" stroke="#202622" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M300 800 h168 v70 c0 30 -30 40 -84 40 s-84 -10 -84 -40 Z" fill="url(#skin)" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <g transform="translate(132 600) scale(1.0) translate(-132 -600)"><path d="M132 540 c-50 -20 -90 20 -78 80 c10 50 50 80 96 70 Z" fill="url(#skin)" stroke="#202622" stroke-width="12" stroke-linejoin="round"/><path d="M110 590 c-14 20 -10 50 8 68" fill="none" stroke="#202622" stroke-width="8" stroke-linecap="round" stroke-opacity="0.5"/></g>
+  <g transform="translate(636 600) scale(1.0) translate(-636 -600)"><path d="M636 540 c50 -20 90 20 78 80 c-10 50 -50 80 -96 70 Z" fill="url(#skin)" stroke="#202622" stroke-width="12" stroke-linejoin="round"/><path d="M658 590 c14 20 10 50 -8 68" fill="none" stroke="#202622" stroke-width="8" stroke-linecap="round" stroke-opacity="0.5"/></g>
+  <path d="M384 250 c150 0 250 120 250 300 c0 160 -100 300 -250 300 s-250 -140 -250 -300 c0 -180 100 -300 250 -300 Z" fill="url(#skin)" stroke="#202622" stroke-width="12"/>
+  <path d="M170 440 c-40 -160 60 -260 214 -260 s254 100 214 260 c-70 -30 -140 -40 -214 -40 s-144 10 -214 40 Z" fill="#FFFFFF" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M150 160 c30 -70 110 -90 160 -50 c30 -60 120 -60 150 0 c50 -40 130 -20 160 50 c30 70 -20 130 -70 120 c-20 60 -110 70 -150 20 c-40 50 -130 40 -150 -20 c-50 10 -100 -50 -100 -120 Z" fill="#FFFFFF" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M170 440 h428" fill="none" stroke="#202622" stroke-width="8" stroke-opacity="0.35"/>
+  <path d="M384 535 c-22 40 -50 90 -36 122 c10 24 62 24 72 0 c14 -32 -14 -82 -36 -122 Z" fill="#F3CBA6" stroke="#202622" stroke-width="12" stroke-linejoin="round"/>
+  <circle cx="230" cy="650" r="34" fill="#F09A90" fill-opacity="0.45"/><circle cx="538" cy="650" r="34" fill="#F09A90" fill-opacity="0.45"/>
+  <path d="M330 790 c20 40 88 40 108 0 c-10 40 -30 60 -54 60 s-44 -20 -54 -60 Z" fill="#202622" stroke="#202622" stroke-width="8" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,10 @@
+# Copied to Build/ and model/ by tools/deploy-site.ps1: contents with hashed/versioned names → long cache.
+# RewriteOptions Inherit: inherits the root rules (HTTPS, anti-hotlink) - without it, a .htaccess in a subfolder cancels the rules do pai.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteOptions Inherit
+</IfModule>
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=31536000, immutable"
+  Header set Access-Control-Allow-Origin "*"
+</IfModule>

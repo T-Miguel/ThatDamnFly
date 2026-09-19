@@ -1,0 +1,62 @@
+# --- Dados científicos brutos (fora do Git; hashes no manifesto) ---
+research/data/raw/*.feather
+research/data/raw/*.log
+research/data/cache/
+research/out/
+research/.venv/
+research/**/__pycache__/
+*.pyc
+
+# --- Unity ---
+app/[Ll]ibrary/
+app/[Tt]emp/
+app/[Oo]bj/
+app/[Bb]uild/
+app/[Bb]uilds/
+app/[Ll]ogs/
+app/[Uu]ser[Ss]ettings/
+app/[Mm]emoryCaptures/
+app/.vs/
+app/*.csproj
+app/*.sln
+app/*.suo
+app/*.user
+app/*.pidb
+app/*.booproj
+app/*.svd
+app/*.tmp
+app/.idea/
+app/crashlytics-build.properties
+app/.utmp/
+app/.gradle/
+
+# --- FlyCore ---
+flycore/build/
+flycore/build-*/
+flycore/out/
+
+# --- Builds e artefactos ---
+dist/
+*.apk
+*.aab
+*.keystore
+*.jks
+*.mobileprovision
+*.p12
+
+# --- Segredos (nunca no repo) ---
+.env
+.env.*
+secrets/
+tools/*.log
+tools/*.err
+
+# --- SO / editores ---
+.DS_Store
+Thumbs.db
+*.swp
+app/Tests.Domain/bin/
+app/Tests.Domain/obj/
+tools/art/node_modules/
+art/out/_preview_*.png
+app/Assets/Resources/PerformanceTestRun*

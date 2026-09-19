@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <!-- Kitchen M0 - own art of That Damn Fly. UI/UX rules §02: dark outline, flat colours, ≤3 values per material, light from the top-left corner, large calm areas. -->
+  <defs>
+    <pattern id="tiles" x="0" y="0" width="150" height="150" patternUnits="userSpaceOnUse">
+      <rect width="150" height="150" fill="#EDE6D2"/>
+      <path d="M0 0 H150 M0 0 V150" stroke="#D8D0BB" stroke-width="6"/>
+    </pattern>
+  </defs>
+  <!-- tiled wall (calm area) -->
+  <rect x="0" y="0" width="1200" height="1150" fill="url(#tiles)"/>
+  <!-- sage tile frieze -->
+  <rect x="0" y="1000" width="1200" height="60" fill="#CBD3B9"/>
+  <path d="M0 1000 H1200 M0 1060 H1200" stroke="#202622" stroke-width="6"/>
+  <!-- shelf with jars (top-left corner, discreet) -->
+  <rect x="80" y="330" width="440" height="22" fill="#B98F55" stroke="#202622" stroke-width="6"/>
+  <g stroke="#202622" stroke-width="6">
+    <rect x="120" y="230" width="90" height="100" rx="12" fill="#F7F0DE"/><rect x="120" y="230" width="90" height="22" rx="8" fill="#AF3D2F"/>
+    <rect x="240" y="250" width="70" height="80" rx="10" fill="#F4CD3C"/><rect x="240" y="250" width="70" height="18" rx="6" fill="#202622"/>
+    <rect x="340" y="220" width="110" height="110" rx="14" fill="#CBD3B9"/><rect x="340" y="220" width="110" height="24" rx="8" fill="#202622"/>
+  </g>
+  <!-- small window on the right (light) -->
+  <rect x="820" y="180" width="300" height="360" rx="10" fill="#DCE6EA" stroke="#202622" stroke-width="8"/>
+  <path d="M970 180 V540 M820 360 H1120" stroke="#202622" stroke-width="8"/>
+  <path d="M840 200 L950 200 L840 330 Z" fill="#FFFFFF" fill-opacity="0.35"/>
+  <!-- home of the fridge (the fridge is a scene object: it leaves from here to the tool bar). Behind: dirty wall, cobwebs, mouse hole, a forgotten spoon and sock. -->
+  <rect x="900" y="1130" width="300" height="470" fill="#CBD3B9" stroke="#202622" stroke-width="8"/>
+  <rect x="900" y="620" width="260" height="530" fill="#8F8A76" fill-opacity="0.35"/>
+  <rect x="908" y="1138" width="244" height="414" fill="#B5BDA3"/>
+  <g stroke="#555E55" stroke-width="3" fill="none" stroke-opacity="0.8">
+    <path d="M900 620 L1000 620 M900 620 L900 720 M900 620 L1000 720 M900 620 L960 650 M900 620 L940 690"/>
+    <path d="M915 640 Q935 630 955 660 Q945 685 920 690 Q905 665 915 640" />
+    <path d="M1160 620 L1060 620 M1160 620 L1160 720 M1160 620 L1060 720 M1160 620 L1100 650 M1160 620 L1120 690"/>
+    <path d="M1145 640 Q1125 630 1105 660 Q1115 685 1140 690 Q1155 665 1145 640"/>
+  </g>
+  <g stroke="#555E55" stroke-width="3" stroke-opacity="0.6" fill="none"><path d="M930 900 q20 -10 40 0 q20 10 40 0 M960 960 q20 -10 40 0"/></g>
+  <path d="M1080 1552 a34 34 0 0 1 68 0 Z" fill="#202622"/>
+  <circle cx="1104" cy="1536" r="4" fill="#F7F0DE"/><circle cx="1124" cy="1536" r="4" fill="#F7F0DE"/>
+  <g stroke="#202622" stroke-width="5" stroke-linecap="round"><path d="M940 1530 l70 -30" stroke="#8C948C" stroke-width="8"/><ellipse cx="1016" cy="1497" rx="14" ry="9" fill="#8C948C" transform="rotate(-23 1016 1497)"/></g>
+  <path d="M960 1300 q30 -40 60 -10 q10 30 -20 40 q-30 0 -40 -30 Z" fill="#AF3D2F" stroke="#202622" stroke-width="5"/>
+  <circle cx="1010" cy="1430" r="16" fill="#8F8A76" fill-opacity="0.5"/><circle cx="950" cy="1470" r="11" fill="#8F8A76" fill-opacity="0.5"/>
+  <!-- hook for the pan (scene object) -->
+  <path d="M744 452 v18 q0 14 -12 14" fill="none" stroke="#202622" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="744" cy="448" r="7" fill="#202622"/>
+  <!-- counter -->
+  <rect x="0" y="1060" width="900" height="70" fill="#B98F55" stroke="#202622" stroke-width="8"/>
+  <rect x="0" y="1060" width="900" height="18" fill="#D9B27A"/>
+  <!-- lower cabinets -->
+  <rect x="0" y="1130" width="900" height="470" fill="#CBD3B9" stroke="#202622" stroke-width="8"/>
+  <g stroke="#202622" stroke-width="7" fill="#DCE2CC">
+    <rect x="40" y="1170" width="380" height="390" rx="12"/><rect x="480" y="1170" width="380" height="390" rx="12"/>
+  </g>
+  <rect x="380" y="1340" width="18" height="70" rx="8" fill="#202622"/><rect x="500" y="1340" width="18" height="70" rx="8" fill="#202622"/>
+  <!-- fruit bowl on the counter -->
+  <path d="M560 1060 C570 1020 700 1020 710 1060 Z" fill="#2755A5" stroke="#202622" stroke-width="7"/>
+  <circle cx="600" cy="1022" r="26" fill="#AF3D2F" stroke="#202622" stroke-width="6"/>
+  <circle cx="650" cy="1014" r="30" fill="#F4CD3C" stroke="#202622" stroke-width="6"/>
+  <circle cx="690" cy="1030" r="22" fill="#CBD3B9" stroke="#202622" stroke-width="6"/>
+  <!-- cutting board and knife (left counter) -->
+  <rect x="80" y="1028" width="260" height="34" rx="8" fill="#D9B27A" stroke="#202622" stroke-width="6"/>
+  <!-- skirting board -->
+  <rect x="0" y="1560" width="1200" height="40" fill="#555E55"/>
+</svg>

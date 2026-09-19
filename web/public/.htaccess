@@ -1,0 +1,65 @@
+# That Damn Fly - Apache hosting (Bluehost). Equivalent to _headers (Cloudflare Pages).
+# Unity Web build with Brotli pre-compressed files (.br) and hashed names; static neural model in /model.
+Options -Indexes
+AddDefaultCharset utf-8
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteOptions InheritDown
+  # always HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/wasm .wasm
+  AddType application/javascript .js
+  AddType application/octet-stream .data .tdfm
+  AddType application/json .json
+  AddType application/manifest+json .webmanifest
+  AddType application/xml .xml
+  AddType text/markdown .md
+</IfModule>
+
+# .br files: type from the inner name and Content-Encoding br (the browser decompresses); never recompress
+<IfModule mod_headers.c>
+  <FilesMatch "\.wasm\.br$">
+    ForceType application/wasm
+    Header set Content-Encoding br
+  </FilesMatch>
+  <FilesMatch "\.js\.br$">
+    ForceType application/javascript
+    Header set Content-Encoding br
+  </FilesMatch>
+  <FilesMatch "\.data\.br$">
+    ForceType application/octet-stream
+    Header set Content-Encoding br
+  </FilesMatch>
+  <FilesMatch "\.br$">
+    Header append Vary Accept-Encoding
+  </FilesMatch>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header set Content-Security-Policy "frame-ancestors 'self'"
+  Header set X-Frame-Options "SAMEORIGIN"
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # TemplateData (screenshots, icons, og image) keeps its file names between releases: short cache, revalidated (the page also adds ?v=version)
+  SetEnvIf Request_URI "^/TemplateData/" tdf_template
+  Header set Cache-Control "max-age=600, must-revalidate" env=tdf_template
+</IfModule>
+
+# Anti-hotlink: the build and the model only from thatdamnfly.com (or without Referer: apps and direct requests)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?thatdamnfly\.com/ [NC]
+  RewriteCond %{REQUEST_URI} ^/(Build|model)/ [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+<IfModule mod_deflate.c>
+  SetEnvIfNoCase Request_URI "\.(br|gz|wasm|tdfm|data|png|jpg|ico)$" no-gzip dont-vary
+</IfModule>

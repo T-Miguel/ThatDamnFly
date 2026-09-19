@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <!-- Picnic - own art of That Damn Fly. Same rules as the kitchen: dark outline, flat colours, ≤3 values per material, light from the top-left corner, large calm areas. -->
+  <defs>
+    <pattern id="check" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+      <rect width="120" height="120" fill="#F7F0DE"/>
+      <rect width="60" height="60" fill="#C9736A" fill-opacity="0.75"/>
+      <rect x="60" y="60" width="60" height="60" fill="#C9736A" fill-opacity="0.75"/>
+      <rect x="60" width="60" height="60" fill="#E8B3A8" fill-opacity="0.35"/>
+      <rect y="60" width="60" height="60" fill="#E8B3A8" fill-opacity="0.35"/>
+    </pattern>
+    <pattern id="weave" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <rect width="28" height="28" fill="#B98F55"/>
+      <path d="M0 14 H28 M14 0 V28" stroke="#8F6A38" stroke-width="5"/>
+    </pattern>
+  </defs>
+  <!-- sky (calm area) -->
+  <rect x="0" y="0" width="1200" height="420" fill="#BFD7E6"/>
+  <circle cx="1010" cy="130" r="70" fill="#F4CD3C" stroke="#202622" stroke-width="6"/>
+  <g fill="#F7F0DE" stroke="#202622" stroke-width="6" stroke-linejoin="round">
+    <path d="M160 250 q30 -70 100 -50 q30 -60 100 -30 q70 -10 80 50 q50 10 30 50 H140 q-30 -40 20 -20 Z"/>
+    <path d="M620 150 q20 -50 70 -40 q30 -40 80 -10 q60 0 55 45 q40 15 15 40 H600 q-20 -30 20 -35 Z"/>
+  </g>
+  <!-- hills and trees in the background -->
+  <path d="M0 420 Q300 300 600 400 T1200 380 V470 H0 Z" fill="#9FB98A" stroke="#202622" stroke-width="6"/>
+  <g stroke="#202622" stroke-width="6" stroke-linejoin="round">
+    <rect x="212" y="330" width="26" height="90" fill="#8F6A38"/><circle cx="225" cy="300" r="70" fill="#5F8A55"/><circle cx="190" cy="330" r="45" fill="#5F8A55"/><circle cx="262" cy="335" r="45" fill="#5F8A55"/>
+    <rect x="882" y="330" width="26" height="90" fill="#8F6A38"/><circle cx="895" cy="290" r="80" fill="#5F8A55"/><circle cx="850" cy="330" r="50" fill="#5F8A55"/><circle cx="940" cy="335" r="50" fill="#5F8A55"/>
+  </g>
+  <!-- grass (large calm area) -->
+  <rect x="0" y="465" width="1200" height="1135" fill="#8DB27A"/>
+  <path d="M0 465 H1200" stroke="#202622" stroke-width="6"/>
+  <g stroke="#5F8A55" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M70 620 l10 -40 M85 620 l12 -30 M100 620 l6 -36"/><path d="M1080 700 l10 -40 M1095 700 l12 -30 M1110 700 l6 -36"/>
+    <path d="M140 1480 l10 -40 M155 1480 l12 -30 M170 1480 l6 -36"/><path d="M1000 1500 l10 -40 M1015 1500 l12 -30 M1030 1500 l6 -36"/>
+    <path d="M560 560 l10 -40 M575 560 l12 -30 M590 560 l6 -36"/>
+  </g>
+  <g stroke="#202622" stroke-width="4">
+    <circle cx="110" cy="760" r="14" fill="#F7F0DE"/><circle cx="110" cy="760" r="5" fill="#F4CD3C"/>
+    <circle cx="1090" cy="1000" r="14" fill="#F7F0DE"/><circle cx="1090" cy="1000" r="5" fill="#F4CD3C"/>
+    <circle cx="180" cy="1180" r="14" fill="#F7F0DE"/><circle cx="180" cy="1180" r="5" fill="#F4CD3C"/>
+    <circle cx="1040" cy="1420" r="14" fill="#F7F0DE"/><circle cx="1040" cy="1420" r="5" fill="#F4CD3C"/>
+  </g>
+  <!-- checkered blanket in slight perspective -->
+  <path d="M330 640 L870 640 L1040 1440 L160 1440 Z" fill="url(#check)" stroke="#202622" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M330 640 L870 640 L1040 1440 L160 1440 Z" fill="#F7F0DE" fill-opacity="0.08"/>
+  <!-- home of the basket (the basket is a scene object: it leaves from here to the bar). Behind: crumpled yellowed blanket, ants in a line, crumbs, a forgotten fork. -->
+  <rect x="236" y="1096" width="288" height="188" rx="26" fill="#C9B86A" fill-opacity="0.55"/>
+  <g fill="#202622"><circle cx="270" cy="1250" r="5"/><circle cx="290" cy="1240" r="5"/><circle cx="310" cy="1232" r="5"/><circle cx="332" cy="1226" r="5"/><circle cx="354" cy="1222" r="5"/><circle cx="378" cy="1220" r="5"/></g>
+  <g fill="#E9C77B" stroke="#202622" stroke-width="3"><circle cx="420" cy="1160" r="7"/><circle cx="470" cy="1200" r="6"/><circle cx="440" cy="1240" r="8"/><circle cx="300" cy="1150" r="6"/></g>
+  <g stroke="#8C948C" stroke-width="10" stroke-linecap="round"><path d="M360 1120 l120 40"/></g><path d="M470 1150 l22 8 M474 1160 l22 8 M478 1140 l22 8" stroke="#8C948C" stroke-width="7" stroke-linecap="round"/>
+  <!-- ring of trodden grass (home of the frisbee) and crumbs (home of the napkin) -->
+  <ellipse cx="192" cy="856" rx="86" ry="60" fill="#C9B86A" fill-opacity="0.45"/><ellipse cx="192" cy="856" rx="60" ry="40" fill="#8DB27A"/>
+  <g fill="#E9C77B" stroke="#202622" stroke-width="3"><circle cx="840" cy="1040" r="6"/><circle cx="880" cy="1070" r="5"/><circle cx="860" cy="1090" r="7"/></g>
+  <!-- plate with sandwiches -->
+  <g stroke="#202622" stroke-width="6">
+    <ellipse cx="700" cy="880" rx="150" ry="70" fill="#F7F0DE"/>
+    <ellipse cx="700" cy="880" rx="120" ry="52" fill="none" stroke="#D8D0BB"/>
+    <path d="M620 870 L700 830 L780 870 L780 890 L700 930 L620 890 Z" fill="#E9C77B"/>
+    <path d="M620 878 L700 838 L780 878" fill="none" stroke="#5F8A55" stroke-width="10"/>
+    <path d="M620 890 L700 850 L780 890" fill="none" stroke="#AF3D2F" stroke-width="8"/>
+  </g>
+  <!-- watermelon -->
+  <g stroke="#202622" stroke-width="6" stroke-linejoin="round">
+    <path d="M760 1130 A130 130 0 0 1 1020 1130 Z" fill="#5F8A55"/>
+    <path d="M785 1130 A105 105 0 0 1 995 1130 Z" fill="#F7F0DE"/>
+    <path d="M800 1130 A90 90 0 0 1 980 1130 Z" fill="#AF3D2F" stroke="none"/>
+    <g fill="#202622" stroke="none"><ellipse cx="850" cy="1090" rx="6" ry="10"/><ellipse cx="890" cy="1060" rx="6" ry="10"/><ellipse cx="930" cy="1090" rx="6" ry="10"/><ellipse cx="890" cy="1110" rx="6" ry="10"/></g>
+  </g>
+  <!-- lemonade jug -->
+  <g stroke="#202622" stroke-width="6" stroke-linejoin="round">
+    <path d="M470 720 H590 L575 900 H485 Z" fill="#F4CD3C" fill-opacity="0.85"/>
+    <path d="M470 720 H590 L575 900 H485 Z" fill="none"/>
+    <path d="M482 760 H578" stroke="#F7F0DE" stroke-width="10" stroke-opacity="0.8"/>
+    <path d="M590 760 q50 10 40 70 q-6 30 -46 30" fill="none" stroke-width="10"/>
+    <circle cx="520" cy="800" r="16" fill="#F7F0DE" stroke-width="4"/><circle cx="555" cy="850" r="12" fill="#F7F0DE" stroke-width="4"/>
+  </g>
+  <!-- apples -->
+  <g stroke="#202622" stroke-width="6">
+    <circle cx="400" cy="960" r="42" fill="#AF3D2F"/><path d="M400 918 q10 -30 30 -30" fill="none" stroke-width="6"/>
+    <circle cx="470" cy="1010" r="36" fill="#5F8A55"/><path d="M470 974 q8 -24 26 -24" fill="none" stroke-width="6"/>
+  </g>
+</svg>

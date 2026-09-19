@@ -1,0 +1,19 @@
+{
+  "name": "That Damn Fly",
+  "short_name": "That Damn Fly",
+  "description": "One fly. Zero patience. A game of domestic revenge against a fly driven by a neural circuit derived from a real connectome.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F0DE",
+  "theme_color": "#F4CD3C",
+  "lang": "en",
+  "categories": ["games", "education"],
+  "icons": [
+    { "src": "/TemplateData/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/TemplateData/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/TemplateData/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/TemplateData/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

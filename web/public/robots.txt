@@ -1,0 +1,5 @@
+# That Damn Fly: thatdamnfly.com
+User-agent: *
+Allow: /
+Disallow: /Build/
+Sitemap: https://thatdamnfly.com/sitemap.xml

@@ -1,0 +1,21 @@
+# Cloudflare Pages - headers per path. Build and model on immutable paths; entry page without a long cache.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+/index.html
+  Cache-Control: no-cache
+/Build/*
+  Cache-Control: public, max-age=31536000, immutable
+/Build/*.wasm.br
+  Content-Type: application/wasm
+  Content-Encoding: br
+/Build/*.js.br
+  Content-Type: application/javascript
+  Content-Encoding: br
+/Build/*.data.br
+  Content-Type: application/octet-stream
+  Content-Encoding: br
+/model/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
